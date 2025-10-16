@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pundit Yugal Acharya: Wisdom and Tradition - PANDIT YUGAL ACHARYA</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700|Lora:400,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+        /* =========================
+          Theme variables (Golden + Saffron) - UPDATED FOR MAXIMUM WIDTH
+          ========================= */
+        :root {
+            --saffron: #ff9933;
+            --gold: #d4af37;
+            --gold-2: #f3c95a;
+            --bg: #fffaf4;
+            --card: #fff;
+            --muted: #6b6b6b;
+            --accent-dark: #7a4c1d;
+            --accent-light: #fef0cd;
+            --maxw: 1500px;
+            --radius: 12px;
+            --shadow-light: 0 8px 25px rgba(16, 24, 40, 0.04);
+            --shadow-medium: 0 16px 50px rgba(16, 24, 40, 0.08);
+        }
+
+        /* Base Styles (Simplified for this snippet) */
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(180deg, var(--bg), #fff6ee);
+            color: #111;
+            line-height: 1.7; 
+            font-size: 17px; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lora', serif; color: var(--accent-dark); line-height: 1.2; }
+        .container { max-width: var(--maxw); margin: 0 auto; padding: 0 30px; }
+        
+        /* Header & Navigation */
+        header.site-header {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 250, 240, 0.7));
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            color: var(--muted);
+            padding: 6px 0;
+        }
+        .topbar a { color: var(--muted); text-decoration: none; }
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+        }
+        .brand { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            /* Added styles to ensure the logo link and text wrap correctly */
+            text-decoration: none; 
+        }
+        
+        /* Updated .brand to be the link container */
+        .brand a { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            text-decoration: none; 
+        }
+
+        /* Updated to target the logo inside the link */
+        .brand a .logo {
+            width: 56px; height: 56px; border-radius: 50%; /* Changed to 50% for a circular logo */
+            background: radial-gradient(circle at 30% 30%, #fff8ea, #fff0d6);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: var(--accent-dark);
+            border: 2px solid rgba(212, 175, 55, 0.12);
+            /* New: Added image styles */
+            overflow: hidden; 
+        }
+        /* New: Logo image style - Important for using an image URL */
+        .brand a .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        /* Updated to target the heading inside the link */
+        .brand a h1 { margin: 0; font-size: 18px; color: var(--accent-dark); }
+        
+        nav.main-nav { display: flex; gap: 8px; align-items: center; }
+        nav.main-nav a {
+            padding: 8px 14px; 
+            border-radius: 8px;
+            color: var(--accent-dark); text-decoration: none; font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        nav.main-nav a:hover { background: rgba(212, 175, 55, 0.06); }
+        nav.main-nav a[aria-current="page"] {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--saffron);
+        }
+        .btn-cta {
+            background: linear-gradient(90deg, var(--gold), var(--gold-2));
+            padding: 12px 20px; 
+            border-radius: 10px; border: 0;
+            color: #111; font-weight: 700; cursor: pointer;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none; /* Added to make CTA a link */
+        }
+        .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15); }
+
+        /* Main Content Area */
+        main { padding: 60px 0; }
+        section { margin-bottom: 70px; }
+
+        /* Hero Banner */
+        .hero-about {
+            display: grid;
+            grid-template-columns: 1fr 520px; 
+            gap: 50px; 
+            align-items: center;
+            padding: 50px 0;
+        }
+        .hero-about h1 { font-size: 56px; margin-bottom: 20px; } 
+        .hero-about .lead { font-size: 24px; color: var(--muted); margin-bottom: 30px; } 
+        .hero-about p { color: var(--muted); }
+
+        /* Cosmic Tree Graphic */
+        .cosmic-tree-wrap {
+            width: 520px; height: 520px; 
+            display: flex; align-items: center; justify-content: center;
+            background: radial-gradient(circle at 50% 50%, var(--accent-light) 0%, var(--bg) 100%);
+            border-radius: 50%;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+            animation: slow-rotate 100s linear infinite;
+        }
+
+        @keyframes slow-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cosmic-tree-inner-glow {
+            position: absolute;
+            width: 120px; height: 120px; 
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--saffron) 0%, transparent 70%);
+            filter: blur(30px); 
+            opacity: 0.7;
+            animation: pulse-glow 3s infinite alternate ease-in-out;
+        }
+        @keyframes pulse-glow {
+            from { transform: scale(0.9); opacity: 0.6; }
+            to { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* ENHANCED: Image Styling for Proper Framing and Larger Size */
+        .cosmic-tree-wrap .profile-img {
+            /* KEY CHANGE 1: INCREASED SIZE */
+            width: 400px; 
+            height: 400px; 
+            
+            /* KEY CHANGE 2: FITTING */
+            object-fit: cover; 
+            object-position: top; /* Ensures the head/face is prioritized in the crop */
+            
+            /* ANIMATION & BORDER STYLES */
+            transform: rotate(0deg); 
+            transition: transform 0.5s ease;
+            border-radius: 50%; 
+            border: 15px solid var(--gold); 
+            outline: 5px solid var(--card); 
+            box-shadow: 0 10px 40px rgba(122, 76, 29, 0.2);
+            z-index: 5; 
+            animation: reverse-rotate 100s linear infinite; 
+        }
+
+        @keyframes reverse-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+        
+        .cosmic-tree-wrap .profile-img:hover {
+            transform: scale(1.03) rotate(-360deg); 
+            box-shadow: 0 15px 50px rgba(122, 76, 29, 0.3);
+        }
+
+        /* Remaining styles (Timeline, Testimonials, CTA, Footer, etc.) are standard */
+
+        /* Timeline Styles (Added for completeness) */
+        .timeline-section {
+            background: var(--accent-light);
+            padding: 70px 0;
+        }
+        .timeline-section h2 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+        .timeline-events {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .timeline-events::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--gold);
+            margin-left: -2px;
+        }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        .timeline-marker {
+            width: 20px;
+            height: 20px;
+            background: var(--saffron);
+            border: 3px solid var(--card);
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            margin-left: -10px;
+            z-index: 10;
+        }
+        .timeline-content {
+            width: 45%;
+            padding: 10px 20px;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-light);
+        }
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 5%;
+            text-align: right;
+        }
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 5%;
+            text-align: left;
+        }
+        .timeline-content h4 {
+            color: var(--accent-dark);
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        /* Testimonials */
+        .testimonials-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px; 
+        }
+        .testimonial-card { 
+            background: var(--accent-light); 
+            padding: 30px; 
+            border-radius: var(--radius); 
+            box-shadow: var(--shadow-light); 
+            border-left: 5px solid var(--saffron);
+        }
+        .testimonial-card blockquote { 
+            margin: 0; 
+            font-size: 18px; 
+            font-style: italic; 
+            color: var(--accent-dark); 
+        }
+        .testimonial-card .author { 
+            display: block; 
+            margin-top: 15px; 
+            font-weight: 700; 
+            color: var(--gold); 
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--accent-dark);
+            color: #fff;
+            padding: 60px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 70px;
+            margin-bottom: 70px;
+        }
+        .cta-section h2 {
+            color: var(--gold);
+            font-size: 42px;
+            margin-top: 0;
+        }
+        .cta-section p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 19px;
+            color: #fef0cd;
+        }
+        .cta-section .btn-cta {
+            background: var(--saffron);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 153, 51, 0.3);
+        }
+        
+        /* Footer - CONSISTENT */
+        footer {
+            padding: 30px 0; 
+            background: #0b0b0b;
+            color: #e6d9b0;
+            margin-top: 0; /* Changed to 0 as main content ends with a section */
+            font-size: 15px; 
+        }
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+        }
+        footer strong { color: var(--gold); }
+
+        /* Responsive Adjustments for new size */
+        @media (max-width: 1000px) {
+            .hero-about { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .cosmic-tree-wrap { width: 400px; height: 400px; margin: 0 auto; animation: none; }
+            /* Adjusted size for tablet view */
+            .cosmic-tree-wrap .profile-img { 
+                width: 300px; 
+                height: 300px; 
+                border: 10px solid var(--gold); 
+                object-position: top;
+                animation: none; 
+            }
+            /* Timeline adjustment */
+            .timeline-events::before {
+                left: 20px;
+            }
+            .timeline-marker {
+                left: 20px;
+                margin-left: -10px;
+            }
+            .timeline-item {
+                flex-direction: row !important;
+            }
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                width: calc(100% - 60px);
+                margin: 0 0 0 60px;
+                text-align: left;
+            }
+            .timeline-content h4 {
+                font-size: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            .cosmic-tree-wrap { width: 350px; height: 350px; }
+            /* Adjusted size for mobile view */
+            .cosmic-tree-wrap .profile-img { 
+                width: 250px; 
+                height: 250px; 
+                border: 8px solid var(--gold); 
+                object-position: top;
+            }
+            .hero-about h1 { font-size: 40px; }
+        }
+
+        /* Custom Styles for Values & Methodology (Styles remain the same) */
+        .value-card { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-light); border-top: 5px solid var(--gold); transition: all 0.3s ease; }
+        .value-card h4 { font-size: 26px; color: var(--saffron); margin-bottom: 15px; }
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .methodology-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .step-card { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-light); border-left: 5px solid var(--accent-light); }
+        .step-card h4 { display: flex; align-items: center; gap: 12px; font-size: 22px; }
+        .step-card h4 span { background: var(--saffron); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="topbar">
+                <div>Astrology Wisdom Since 1995</div>
+                <a href="contact.html">Contact Us</a> 
+            </div>
+            <div class="nav-wrap">
+                <div class="brand">
+                    <a href="index.html"> <div class="logo">
+                            <img src="https://i.ibb.co/CKnY3DVT/Astrology-Business-Logo-Gold-Accents.png" alt="Pundit Yugal Acharya Logo"> 
+                        </div>
+                        <h1>PANDIT YUGAL ACHARYA</h1>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html" aria-current="page">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="honors.html">Honors</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <a href="contact.html" class="btn-cta">Book Consultation</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section class="hero-about">
+                <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                    <h1>Pundit Yugal Acharya: Wisdom and Tradition</h1>
+                    <p class="lead">**25 वर्षों के गहन शोध, हनुमान जी एवं गुरु कृपा से सिद्ध**, एक समर्पित ज्योतिषी और मार्गदर्शक।</p>
+                    <p>पंडित युगल आचार्य ज्योतिष को केवल भविष्यवाणी का माध्यम नहीं, बल्कि **आत्म-विकास, सही निर्णय लेने और जीवन को सही दिशा में मोड़ने का प्रभावशाली साधन** मानते हैं। वे पारंपरिक संस्कृत ज्ञान की गहराई को आधुनिक समाज की आवश्यकताओं के अनुसार प्रस्तुत करने के लिए प्रतिबद्ध हैं।</p>
+                </div>
+                <div class="cosmic-tree-wrap" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="1200">
+                    <div class="cosmic-tree-inner-glow"></div>
+                    
+                    <img src="https://i.ibb.co/LDF0tmGw/IMG-5009.jpg" alt="Pundit Yugal Acharya" class="profile-img">
+                </div>
+            </section>
+
+            ---
+
+            <section>
+                <h2 style="text-align:center; font-size:40px; margin-bottom:50px;" data-aos="fade-up">The Pillars of Our Practice</h2>
+                <div class="values-grid">
+                    <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                        <div style="font-size:40px; color:var(--saffron);">🧘‍♂️</div>
+                        <h4>आध्यात्मिक साधना (Spiritual Discipline)</h4>
+                        <p>हनुमान जी और गुरु कृपा से प्राप्त ज्ञान और **समर्पित साधक** के रूप में हमारी आध्यात्मिक यात्रा।</p>
+                    </div>
+                    <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                        <div style="font-size:40px; color:var(--saffron);">📚</div>
+                        <h4>परंपरागत ज्ञान (Traditional Knowledge)</h4>
+                        <p>**वैदिक ग्रंथों का गहन अध्ययन** कर समाज के सभी वर्गों को ज्योतिषीय ज्ञान से आलोकित करना।</p>
+                    </div>
+                    <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                        <div style="font-size:40px; color:var(--saffron);">💡</div>
+                        <h4>सरल मार्गदर्शन (Simple Guidance)</h4>
+                        <p>**सरल और व्यावहारिक उपायों** के माध्यम से जटिल समस्याओं को हल करना और सकारात्मक परिवर्तन लाना।</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="timeline-section">
+            <div class="container">
+                <h2 data-aos="fade-up">Education and Our Journey</h2>
+                <div class="timeline-events">
+                    
+                    <div class="timeline-item" data-aos="fade-left">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>पारंपरिक शिक्षा (Traditional Education)</h4>
+                            <p>ज्ञान की शुरुआत **पारंपरिक संस्कृत शिक्षा प्रणाली** के अंतर्गत ज्ञानार्जन से हुई।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-aos="fade-right">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>ज्योतिष आचार्य उपाधि (Jyotish Acharya Degree)</h4>
+                            <p>**जगतगुरु रामानंदाचार्य संस्कृत विश्वविद्यालय** से ज्योतिष आचार्य की प्रतिष्ठित उपाधि प्राप्त की।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-aos="fade-left">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>25 वर्षों का गहन शोध (25 Years of Research)</h4>
+                            <p>पिछले 25 वर्षों से **कुंडली शोधन, पूजा-अनुष्ठान और प्राचीन वैदिक फलित ज्योतिष** पर शोध कार्य जारी।</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item" data-aos="fade-right">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>साख का सशक्तिकरण (Strengthening Credibility)</h4>
+                            <p>हनुमान जी और गुरु कृपा से विभिन्न ज्योतिषीय **सेमिनारों में भाग** लेकर अपनी साख को सशक्त किया।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            
+            ---
+
+            <section>
+                <h2 style="text-align:center; font-size:40px; margin-bottom:30px;" data-aos="fade-up">Our Astrological Service Methodology</h2>
+                <p style="text-align:center; color:var(--muted); max-width: 900px; margin: 0 auto 50px; font-size: 19px;" data-aos="fade-up" data-aos-delay="100">A simple and practical four-step process ensuring you receive the most accurate, accessible, and effective guidance.</p>
+                <div class="methodology-steps">
+                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="200">
+                        <h4><span>1</span> कुंडली का गूढ़ शोधन (Deep Chart Analysis)</h4>
+                        <p>**ज्योतिष आचार्य** के रूप में, हम सूक्ष्म और **गूढ़ ज्योतिषीय गणनाओं** का उपयोग कर कुंडली का पूर्ण शोधन करते हैं।</p>
+                    </div>
+                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="300">
+                        <h4><span>2</span> वैदिक फलादेश (Vedic Interpretation)</h4>
+                        <p>प्राचीन **वैदिक फलित ज्योतिष** के सिद्धांतों का गहन उपयोग कर आपके जीवन के हर पहलू का सटीक फलादेश किया जाता है।</p>
+                    </div>
+                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="400">
+                        <h4><span>3</span> आत्म-विकास परामर्श (Self-Development Guidance)</h4>
+                        <p>हमारा ध्यान आत्म-विकास और **जीवन को सही दिशा** में मोड़ने पर होता है, ताकि आप सही निर्णय ले सकें।</p>
+                    </div>
+                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="500">
+                        <h4><span>4</span> पूजा-अनुष्ठान मार्गदर्शन (Rituals & Remedies)</h4>
+                        <p>जटिल समस्याओं के समाधान के लिए **सरल और व्यावहारिक** पूजा-अनुष्ठान और प्रभावी उपाय बताए जाते हैं।</p>
+                    </div>
+                </div>
+            </section>
+            
+            ---
+            
+            <section>
+                <h2 style="font-size:40px;" data-aos="fade-up">Trust Received by Society</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card" data-aos="flip-up" data-aos-delay="100">
+                        <blockquote>"आचार्य जी की सहज भाषा और स्पष्ट विचारधारा से मुझे अपने जीवन की दिशा मिली। मैं उन्हें एक मार्गदर्शक के रूप में देखती हूँ।"</blockquote>
+                        <span class="author">— Priya K.</span>
+                    </div>
+                    <div class="testimonial-card" data-aos="flip-up" data-aos-delay="200">
+                        <blockquote>"कुंडली शोधन की उनकी विशेषज्ञता अतुलनीय है। उन्होंने सरल उपायों से मेरी सबसे जटिल समस्या को हल कर दिया।"</blockquote>
+                        <span class="author">— Rahul S.</span>
+                    </div>
+                    <div class="testimonial-card" data-aos="flip-up" data-aos-delay="300">
+                        <blockquote>"ज्योतिष को आत्म-विकास का साधन मानने का उनका दृष्टिकोण अद्भुत है। मुझे सही करियर निर्णय लेने में मदद मिली।"</blockquote>
+                        <span class="author">— Sarika L.</span>
+                    </div>
+                </div>
+            </section>
+
+            ---
+
+            <section class="cta-section" data-aos="zoom-out" data-aos-duration="1000">
+                <h2>Ready for Your Cosmic Blueprint?</h2>
+                <p>Leverage the wisdom and **25 years of research** expertise of Pundit Yugal Acharya. Take the first step to illuminate your life path.</p>
+                <a href="contact.html" class="btn-cta">Schedule Your Reading Today</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>&copy; <strong>PANDIT YUGAL ACHARYA</strong></div>
+            <div style="color:var(--gold)">Designed with Golden & Saffron theme</div>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS with settings for continuous animation on scroll
+        AOS.init({
+            once: false, 	 // Animations will re-fire on every scroll
+            duration: 800,	// Animation duration in milliseconds
+            delay: 50,	 	// Delay before animation starts
+        });
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
