@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>SERVICE PAGE</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services: Comprehensive Astrological Guidance - PANDIT YUGAL ACHARYA</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700|Lora:400,700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+        /* =========================
+         Theme variables (Golden + Saffron) - Consistent Across All Pages
+         ========================= */
+        :root {
+            --saffron: #ff9933;
+            --gold: #d4af37;
+            --gold-2: #f3c95a;
+            --bg: #fffaf4;
+            --card: #fff;
+            --muted: #6b6b6b;
+            --accent-dark: #7a4c1d;
+            --accent-light: #fef0cd;
+            --maxw: 1500px; 
+            --radius: 12px;
+            --shadow-light: 0 8px 25px rgba(16, 24, 40, 0.04);
+            --shadow-medium: 0 16px 50px rgba(16, 24, 40, 0.08);
+            --shadow-celestial-initial: 0 0 5px rgba(255, 153, 51, 0.3), 0 0 10px rgba(212, 175, 55, 0.2); /* Added from contact.html */
+            --shadow-celestial-hover: 0 0 15px var(--gold-2), 0 0 30px var(--saffron); /* Added from contact.html */
+        }
+
+        /* Base Styles - REPEATED FOR CONSISTENCY */
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(180deg, var(--bg), #fff6ee);
+            color: #111;
+            line-height: 1.7; 
+            font-size: 17px; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lora', serif; color: var(--accent-dark); line-height: 1.2; }
+        .container { max-width: var(--maxw); margin: 0 auto; padding: 0 30px; }
+        
+        /* Header & Navigation Styles - REPEATED FOR CONSISTENCY */
+        header.site-header {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 250, 240, 0.7));
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            color: var(--muted);
+            padding: 6px 0;
+        }
+        .topbar a { color: var(--muted); text-decoration: none; }
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+        }
+        
+        /* === LOGO STYLES (UPDATED to match contact.html) === */
+        .brand a { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px;
+            text-decoration: none; 
+            color: var(--accent-dark);
+        }
+        .brand .logo-img {
+            width: 75px; 
+            height: 75px; 
+            border-radius: 50%;
+            object-fit: contain;
+            background: linear-gradient(45deg, var(--gold), var(--saffron));
+            padding: 5px;
+            border: 3px solid var(--gold-2);
+            box-shadow: var(--shadow-celestial-initial);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            filter: saturate(1.2);
+        }
+        .brand .logo-img:hover {
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: var(--shadow-celestial-hover);
+        }
+        .brand h1 { 
+            margin: 0; 
+            font-size: 24px; /* Slightly larger text */
+            color: var(--accent-dark); 
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        /* === END LOGO STYLES === */
+
+        nav.main-nav { display: flex; gap: 8px; align-items: center; }
+        nav.main-nav a {
+            padding: 8px 14px; 
+            border-radius: 8px;
+            color: var(--accent-dark); text-decoration: none; font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        nav.main-nav a:hover { background: rgba(212, 175, 55, 0.06); }
+        nav.main-nav a[aria-current="page"] {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--saffron);
+        }
+        .btn-cta {
+            background: linear-gradient(90deg, var(--gold), var(--gold-2));
+            padding: 12px 20px; 
+            border-radius: 10px; border: 0;
+            color: #111; font-weight: 700; cursor: pointer;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none; /* Important for <a> as a button */
+            display: inline-block;
+        }
+        .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15); }
+        .btn-cta-small {
+            padding: 8px 16px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        /* Main Content Area */
+        main { padding: 60px 0; }
+        section { margin-bottom: 70px; }
+
+        /* Hero Banner for Services Page */
+        .services-hero {
+            text-align: center;
+            padding: 30px 0 60px;
+        }
+        .services-hero h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+        .services-hero p {
+            font-size: 22px;
+            color: var(--muted);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid Styling */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .service-card {
+            background: var(--card);
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-medium);
+            border-top: 8px solid var(--saffron);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px; /* Ensure uniform height */
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top: 8px solid var(--gold);
+        }
+        .service-card .icon {
+            font-size: 48px;
+            color: var(--saffron);
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--accent-dark);
+        }
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 25px;
+        }
+        .service-card ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #333;
+        }
+        .service-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--saffron);
+            font-weight: 700;
+        }
+        
+        /* Call to Action - REPEATED FOR CONSISTENCY */
+        .cta-section {
+            text-align: center;
+            padding: 70px 0; 
+            background: linear-gradient(180deg, var(--bg), var(--accent-light));
+            border-radius: var(--radius);
+            margin-top: 80px; 
+        }
+        .cta-section h2 { font-size: 42px; margin-bottom: 25px; } 
+        .cta-section p { font-size: 20px; color: var(--muted); max-width: 800px; margin: 0 auto 35px; } 
+
+        /* Footer - REPEATED FOR CONSISTENCY */
+        footer {
+            padding: 30px 0; 
+            background: #0b0b0b;
+            color: #e6d9b0;
+            margin-top: 70px;
+            font-size: 15px; 
+        }
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+        }
+        footer strong { color: var(--gold); }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1000px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .service-card {
+                min-height: auto; /* Allow height to adjust on mobile */
+            }
+            .services-hero h1 {
+                font-size: 40px;
+            }
+        }
+        @media (max-width: 600px) {
+             .brand h1 { font-size: 20px; }
+             .brand .logo-img { width: 55px; height: 55px; }
+             nav.main-nav { display: none; }
+             .nav-wrap { justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="topbar">
+                <div>Astrology Wisdom Since 1995</div>
+                <a href="contact.html">Contact Us</a> 
+            </div>
+            <div class="nav-wrap">
+                <div class="brand">
+                    <a href="index.html"> 
+                        <img src="https://i.ibb.co/CKnY3DVT/Astrology-Business-Logo-Gold-Accents.png" alt="Pandit Yugal Acharya Logo" class="logo-img">
+                        <h1>PANDIT YUGAL ACHARYA</h1>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a> 
+                    <a href="about.html">About</a>
+                    <a href="services.html" aria-current="page">Services</a> 
+                    <a href="honors.html">Honors</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <a href="contact.html" class="btn-cta">Book Consultation</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <section class="services-hero" data-aos="fade-down">
+                <h1>Our Core Astrological Services</h1>
+                <p>Leverage the profound wisdom of Vedic astrology to gain **clarity, peace, and prosperity** in every aspect of your life. Every solution is rooted in ancient texts and tailored for modern challenges.</p>
+            </section>
+
+            <section>
+                <div class="services-grid">
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                        <div>
+                            <div class="icon">📜</div>
+                            <h3>Comprehensive Kundali Analysis</h3>
+                            <p style="color:var(--muted);">**Clarity for Life Decisions:** Deep analysis of your birth chart to understand your destiny, potential, and challenging periods (Dasha/Mahadasha).</p>
+                            <ul>
+                                <li>Detailed analysis of 12 Houses.</li>
+                                <li>Identification of powerful and weak planets.</li>
+                                <li>Prediction for major life events (marriage, health, career).</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="btn-cta btn-cta-small">Book This Service</a>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <div>
+                            <div class="icon">✨</div>
+                            <h3>Practical & Effective Problem Solutions</h3>
+                            <p style="color:var(--muted);">**Immediate Relief & Protection:** Powerful, easy-to-follow remedies (Upay) and rituals (Anushthan) to mitigate planetary malefic effects and enhance luck.</p>
+                            <ul>
+                                <li>Specific gemstone/Rudraksha recommendations.</li>
+                                <li>Tailored Mantra Jaap and charity (Daan).</li>
+                                <li>Guidance on home-based rituals (Grah Shanti).</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="btn-cta btn-cta-small">Book This Service</a>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div>
+                            <div class="icon">💍</div>
+                            <h3>Marriage & Compatibility Matching</h3>
+                            <p style="color:var(--muted);">**Harmony and Lasting Relationships:** Detailed Gun Milan and analysis of both charts to predict marital life quality, trust, and emotional bond.</p>
+                            <ul>
+                                <li>Comprehensive Koota analysis (Gun Milan).</li>
+                                <li>Assessment of Manglik Dosh and solutions.</li>
+                                <li>Timely guidance for selecting the best wedding date.</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="btn-cta btn-cta-small">Book This Service</a>
+                    </div>
+                    
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                        <div>
+                            <div class="icon">💼</div>
+                            <h3>Business, Career, & Financial Growth</h3>
+                            <p style="color:var(--muted);">**Path to Prosperity:** Astrological guidance for choosing the most suitable career, identifying the right business partner, and best time to invest.</p>
+                            <ul>
+                                <li>Identifying favorable sectors/industries.</li>
+                                <li>Analysis of 2nd, 10th, and 11th houses.</li>
+                                <li>Guidance on overcoming financial blockages.</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="btn-cta btn-cta-small">Book This Service</a>
+                    </div>
+
+                    <div class="service-card" data-aos="flip-left" data-aos-delay="500">
+                        <div>
+                            <div class="icon">🏡</div>
+                            <h3>Vastu & Property Guidance</h3>
+                            <p style="color:var(--muted);">**Prosperity and Peace at Home:** Consultation to harmonize your living or working space according to Vastu Shastra principles for maximum positive energy flow.</p>
+                            <ul>
+                                <li>Vastu check for home, office, or plot.</li>
+                                <li>Simple, non-destructive Vastu remedies.</li>
+                                <li>Guidance on auspicious directions (Disha).</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="btn-cta btn-cta-small">Book This Service</a>
+                    </div>
+
+                    <div class="service-card" data-aos="flip-left" data-aos-delay="600">
+                        <div>
+                            <div class="icon">⏱️</div>
+                            <h3>Muhurat & Auspicious Timing</h3>
+                            <p style="color:var(--muted);">**Success in Every Endeavor:** Determining the most powerful and auspicious time (Muhurat) for starting new ventures, ceremonies, travel, or investments.</p>
+                            <ul>
+                                <li>Best time for business launch/opening.</li>
+                                <li>Muhurat for Griha Pravesh (House Warming).</li>
+                                <li>Electional astrology for major life decisions.</li>
+                            </ul>
+                        </div>
+                        <a href="contact.html" class="btn-cta btn-cta-small">Book This Service</a>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="cta-section" data-aos="zoom-out" data-aos-duration="1000">
+                <h2>Ready to Start Your Journey to Clarity?</h2>
+                <p>Connect with Pandit Yugal Acharya to receive personalized, actionable guidance rooted in 25 years of traditional expertise.</p>
+                <a href="contact.html" class="btn-cta">Schedule Your Consultation Now</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>&copy; <strong>PANDIT YUGAL ACHARYA</strong></div>
+            <div style="color:var(--gold)">Designed with Golden & Saffron theme</div>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS with settings for continuous animation on scroll (once: false)
+        AOS.init({
+            once: false,      
+            duration: 800,    
+            delay: 50,        
+        });
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
