@@ -19,8 +19,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
         /* =========================
-          Theme variables (Golden + Saffron) - UPDATED FOR MAXIMUM WIDTH
-          ========================= */
+        Theme variables (Golden + Saffron) - UPDATED FOR MAXIMUM WIDTH
+        ========================= */
         :root {
             --saffron: #ff9933;
             --gold: #d4af37;
@@ -34,6 +34,9 @@
             --radius: 12px;
             --shadow-light: 0 8px 25px rgba(16, 24, 40, 0.04);
             --shadow-medium: 0 16px 50px rgba(16, 24, 40, 0.08);
+            /* Added for consistent logo styling */
+            --shadow-celestial-initial: 0 0 5px rgba(255, 153, 51, 0.3), 0 0 10px rgba(212, 175, 55, 0.2);
+            --shadow-celestial-hover: 0 0 15px var(--gold-2), 0 0 30px var(--saffron);
         }
 
         /* Base Styles (Simplified for this snippet) */
@@ -63,10 +66,11 @@
         }
         .topbar {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Align right for the contact link */
             font-size: 15px;
             color: var(--muted);
             padding: 6px 0;
+            align-items: center;
         }
         .topbar a { color: var(--muted); text-decoration: none; }
         .nav-wrap {
@@ -74,12 +78,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 14px 0;
+            position: relative; /* Added for mobile menu positioning */
         }
         .brand { 
             display: flex; 
             align-items: center; 
             gap: 12px; 
-            /* Added styles to ensure the logo link and text wrap correctly */
             text-decoration: none; 
         }
         
@@ -89,28 +93,32 @@
             align-items: center; 
             gap: 12px; 
             text-decoration: none; 
+            color: var(--accent-dark);
         }
 
         /* Updated to target the logo inside the link */
         .brand a .logo {
-            width: 56px; height: 56px; border-radius: 50%; /* Changed to 50% for a circular logo */
-            background: radial-gradient(circle at 30% 30%, #fff8ea, #fff0d6);
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; color: var(--accent-dark);
-            border: 2px solid rgba(212, 175, 55, 0.12);
-            /* New: Added image styles */
-            overflow: hidden; 
+            width: 75px; /* Increased size to match index.html */
+            height: 75px; /* Increased size to match index.html */
+            border-radius: 50%;
+            object-fit: contain;
+            background: linear-gradient(45deg, var(--gold), var(--saffron));
+            padding: 5px;
+            border: 3px solid var(--gold-2);
+            box-shadow: var(--shadow-celestial-initial);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            filter: saturate(1.2);
         }
         /* New: Logo image style - Important for using an image URL */
         .brand a .logo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 50%; /* Make inner image circular */
         }
 
-
         /* Updated to target the heading inside the link */
-        .brand a h1 { margin: 0; font-size: 18px; color: var(--accent-dark); }
+        .brand a h1 { margin: 0; font-size: 24px; color: var(--accent-dark); font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
         
         nav.main-nav { display: flex; gap: 8px; align-items: center; }
         nav.main-nav a {
@@ -132,8 +140,23 @@
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.1);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             text-decoration: none; /* Added to make CTA a link */
+            display: inline-block;
         }
         .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15); }
+
+        /* --- START OF MOBILE MENU CSS --- */
+        .menu-toggle {
+            display: none; /* Hidden by default on desktop */
+            background: transparent;
+            border: none;
+            color: var(--accent-dark);
+            font-size: 30px;
+            cursor: pointer;
+            padding: 8px;
+            line-height: 1;
+            margin-left: 15px;
+        }
+        /* --- END OF MOBILE MENU CSS --- */
 
         /* Main Content Area */
         main { padding: 60px 0; }
@@ -352,10 +375,56 @@
         }
         footer strong { color: var(--gold); }
 
-        /* Responsive Adjustments for new size */
+        /* Custom Styles for Values & Methodology (Styles remain the same) */
+        .value-card { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-light); border-top: 5px solid var(--gold); transition: all 0.3s ease; }
+        .value-card h4 { font-size: 26px; color: var(--saffron); margin-bottom: 15px; }
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .methodology-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .step-card { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-light); border-left: 5px solid var(--accent-light); }
+        .step-card h4 { display: flex; align-items: center; gap: 12px; font-size: 22px; }
+        .step-card h4 span { background: var(--saffron); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; }
+        
+        /* --- START OF MOBILE MENU STYLES --- */
         @media (max-width: 1000px) {
+            /* Navigation Overrides */
+            .main-nav {
+                position: absolute;
+                top: 100%; /* Position below the header */
+                left: 0;
+                width: 100%;
+                flex-direction: column; /* Stack links vertically */
+                align-items: center;
+                background: var(--card);
+                border-top: 1px solid var(--accent-light);
+                box-shadow: var(--shadow-medium);
+                transform: scaleY(0); /* Hidden by default */
+                transform-origin: top;
+                transition: transform 0.3s ease-in-out;
+                padding: 10px 0;
+                z-index: 999;
+            }
+            .main-nav.is-open {
+                transform: scaleY(1); /* Visible when toggled */
+            }
+            .main-nav a {
+                padding: 12px 20px;
+                width: 90%;
+                text-align: center;
+            }
+            .menu-toggle {
+                display: block; /* Show button on mobile */
+            }
+            /* Hide the "Book Consultation" button in the nav-wrap on small screens since it's redundant */
+            .nav-wrap > .btn-cta {
+                display: none;
+            }
+            .brand a .logo { width: 60px; height: 60px; }
+            .brand a h1 { font-size: 20px; }
+            .topbar div:first-child { display: none; } /* Hide "Astrology Wisdom..." on small screens */
+
+            /* Layout Overrides */
             .hero-about { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .cosmic-tree-wrap { width: 400px; height: 400px; margin: 0 auto; animation: none; }
+            .cosmic-tree-wrap { width: 400px; height: 400px; margin: 0 auto; animation: none; order: -1; }
             /* Adjusted size for tablet view */
             .cosmic-tree-wrap .profile-img { 
                 width: 300px; 
@@ -395,20 +464,22 @@
                 object-position: top;
             }
             .hero-about h1 { font-size: 40px; }
+            .hero-about .lead { font-size: 20px; }
+            /* Footer Responsive */
+            footer .container { flex-direction: column; gap: 10px; }
         }
-
-        /* Custom Styles for Values & Methodology (Styles remain the same) */
-        .value-card { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-light); border-top: 5px solid var(--gold); transition: all 0.3s ease; }
-        .value-card h4 { font-size: 26px; color: var(--saffron); margin-bottom: 15px; }
-        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .methodology-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
-        .step-card { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-light); border-left: 5px solid var(--accent-light); }
-        .step-card h4 { display: flex; align-items: center; gap: 12px; font-size: 22px; }
-        .step-card h4 span { background: var(--saffron); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; }
+        /* --- END OF MOBILE MENU STYLES --- */
     </style>
 </head>
 <body>
+    <div id="google_translate_element" style="position:fixed; top:10px; right:10px; z-index:9999;"></div>
 
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <header class="site-header">
         <div class="container">
             <div class="topbar">
@@ -423,7 +494,7 @@
                         <h1>PANDIT YUGAL ACHARYA</h1>
                     </a>
                 </div>
-                <nav class="main-nav">
+                <nav class="main-nav" id="main-nav">
                     <a href="index.html">Home</a>
                     <a href="about.html" aria-current="page">About</a>
                     <a href="services.html">Services</a>
@@ -431,6 +502,9 @@
                     <a href="contact.html">Contact</a>
                 </nav>
                 <a href="contact.html" class="btn-cta">Book Consultation</a>
+                <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false">
+                    &#9776; 
+                </button>
             </div>
         </div>
     </header>
@@ -587,6 +661,23 @@
             duration: 800,	// Animation duration in milliseconds
             delay: 50,	 	// Delay before animation starts
         });
+        
+        // --- MOBILE MENU FIX JAVASCRIPT ---
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.getElementById('main-nav'); 
+
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+                
+                // Toggle the visual state
+                mainNav.classList.toggle('is-open'); 
+                
+                // Update the accessibility state
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+            });
+        }
+        // --- END OF MOBILE MENU FIX JAVASCRIPT ---
     </script>
 </body>
 </html>
