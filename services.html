@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services: Comprehensive Astrological Guidance - PANDIT YUGAL ACHARYA</title>
+    <title>Our Services - PANDIT YUGAL ACHARYA</title>
     <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700|Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -36,7 +36,7 @@
         h1, h2, h3, h4 { font-family: 'Lora', serif; color: var(--accent-dark); }
         .container { max-width: var(--maxw); margin: 0 auto; padding: 0 30px; }
         
-        /* ===== HEADER & NAV ===== */
+        /* ===== HEADER (Synced with Index) ===== */
         header.site-header {
             padding: 12px 0;
             background: rgba(255, 255, 255, 0.95);
@@ -46,18 +46,39 @@
             z-index: 1000;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; position: relative; }
         .brand a { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .brand .logo-img { width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(45deg, var(--gold), var(--saffron)); padding: 4px; border: 2px solid var(--gold-2); }
         
         nav.main-nav { display: flex; gap: 5px; align-items: center; }
-        nav.main-nav a { padding: 8px 12px; text-decoration: none; color: var(--accent-dark); font-weight: 600; font-size: 15px; border-radius: 6px; }
-        nav.main-nav a[aria-current="page"] { color: var(--saffron); background: rgba(255, 153, 51, 0.1); }
+        nav.main-nav a { padding: 8px 12px; text-decoration: none; color: var(--accent-dark); font-weight: 600; font-size: 15px; border-radius: 6px; transition: 0.3s; }
+        nav.main-nav a:hover { background: var(--accent-light); }
+        nav.main-nav a.active { color: var(--saffron); background: rgba(255, 153, 51, 0.1); }
 
         .btn-cta { background: linear-gradient(90deg, var(--gold), var(--gold-2)); padding: 10px 20px; border-radius: 8px; text-decoration: none; color: #000; font-weight: 700; font-size: 14px; }
 
         /* Mobile Toggle Button */
-        .mobile-menu-toggle { display: none; background: none; border: none; font-size: 28px; color: var(--saffron); cursor: pointer; }
+        .menu-toggle { display: none; background: none; border: none; font-size: 30px; color: var(--accent-dark); cursor: pointer; }
+
+        /* ===== MOBILE MENU CSS (Exact Index Logic) ===== */
+        @media (max-width: 1000px) {
+            .menu-toggle { display: block !important; }
+            .nav-wrap .btn-cta { display: none; }
+            nav.main-nav {
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+            nav.main-nav.is-open { display: flex !important; }
+            nav.main-nav a { width: 100%; text-align: center; padding: 12px 0; border-bottom: 1px solid #f9f9f9; }
+        }
 
         /* ===== SERVICES CONTENT ===== */
         .services-hero { text-align: center; padding: 60px 0; }
@@ -65,9 +86,8 @@
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
         .service-card { padding: 40px; background: #fff; border-radius: var(--radius); border-top: 4px solid var(--gold); box-shadow: var(--shadow-medium); display: flex; flex-direction: column; justify-content: space-between; }
         .service-card .icon { font-size: 40px; margin-bottom: 20px; }
-        .service-card ul { padding-left: 20px; margin: 15px 0; color: var(--muted); }
 
-        /* ===== MASTER FOOTER ===== */
+        /* ===== MASTER FOOTER (Working Links) ===== */
         footer { background: #fff3e6; color: var(--accent-dark); padding: 80px 0 30px; margin-top: 100px; border-top: 5px solid var(--saffron); position: relative; z-index: 10; }
         footer::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(var(--gold) 0.5px, transparent 0.5px); background-size: 30px 30px; opacity: 0.15; pointer-events: none; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; position: relative; }
@@ -78,19 +98,6 @@
         .footer-social-wrap { display: flex; gap: 12px; margin-top: 25px; }
         .footer-social-wrap a { width: 40px; height: 40px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--gold); color: var(--accent-dark); font-size: 18px; }
         .footer-bottom { border-top: 1px solid var(--gold); padding-top: 30px; text-align: center; margin-top: 50px; }
-
-        /* Responsive Mobile Menu */
-        @media (max-width: 1000px) {
-            .main-nav, .nav-wrap > .btn-cta { display: none; }
-            .mobile-menu-toggle { display: block; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
-            .footer-col li { justify-content: center; }
-            .footer-social-wrap { justify-content: center; }
-            
-            nav.main-nav.is-open {
-                display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #fff; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            }
-        }
     </style>
 </head>
 <body>
@@ -105,10 +112,10 @@
                     </a>
                 </div>
                 
-                <nav class="main-nav" id="mainNav">
+                <nav class="main-nav">
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
-                    <a href="services.html" aria-current="page">Services</a>
+                    <a href="services.html" class="active">Services</a>
                     <a href="horoscope&Blogs.html">Horoscope & Blogs</a>
                     <a href="honors.html">Honors</a>
                     <a href="contact.html">Contact</a>
@@ -116,7 +123,7 @@
 
                 <a href="contact.html" class="btn-cta">Book Now</a>
 
-                <button class="mobile-menu-toggle" onclick="toggleMenu()">
+                <button class="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -126,7 +133,7 @@
     <main class="container">
         <section class="services-hero" data-aos="fade-down">
             <h1>Our Core Astrological Services</h1>
-            <p>Rooted in ancient Vedic texts, tailored for your modern life challenges.</p>
+            <p>Guiding you through life's challenges with authentic Vedic wisdom.</p>
         </section>
 
         <section class="services-grid">
@@ -134,39 +141,25 @@
                 <div>
                     <div class="icon">📜</div>
                     <h3>Kundali Analysis</h3>
-                    <p>Detailed analysis of your birth chart to understand your destiny and potential.</p>
-                    <ul>
-                        <li>12 House Analysis</li>
-                        <li>Dasha Predictions</li>
-                    </ul>
+                    <p>Deep insights into your birth chart and planetary influences.</p>
                 </div>
-                <a href="contact.html" class="btn-cta">Book Service</a>
+                <a href="contact.html" class="btn-cta">Inquire Now</a>
             </div>
-
             <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                 <div>
-                    <div class="icon">✨</div>
-                    <h3>Remedial Solutions</h3>
-                    <p>Practical remedies to mitigate malefic planetary effects and boost luck.</p>
-                    <ul>
-                        <li>Gemstone Advice</li>
-                        <li>Mantra Jaap</li>
-                    </ul>
+                    <div class="icon">🏠</div>
+                    <h3>Vastu Shastra</h3>
+                    <p>Creating harmony and prosperity in your living and working spaces.</p>
                 </div>
-                <a href="contact.html" class="btn-cta">Book Service</a>
+                <a href="contact.html" class="btn-cta">Inquire Now</a>
             </div>
-
             <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                 <div>
-                    <div class="icon">🏡</div>
-                    <h3>Vastu Consultation</h3>
-                    <p>Harmonize your living space for maximum positive energy flow.</p>
-                    <ul>
-                        <li>Home & Office Vastu</li>
-                        <li>Simple Remedies</li>
-                    </ul>
+                    <div class="icon">✨</div>
+                    <h3>Remedial Pooja</h3>
+                    <p>Spiritual rituals to align your energies with the cosmos.</p>
                 </div>
-                <a href="contact.html" class="btn-cta">Book Service</a>
+                <a href="contact.html" class="btn-cta">Inquire Now</a>
             </div>
         </section>
     </main>
@@ -176,7 +169,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>Pandit Yugal Acharya</h4>
-                    <p>Vedic Astrology & Vastu scholar serving from Jaipur since 2012.</p>
+                    <p>Spiritual guidance and Vedic wisdom for a prosperous life.</p>
                     <div class="footer-social-wrap">
                         <a href="https://www.facebook.com/yugal.sharma.583" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/yugalaacharya" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -191,23 +184,21 @@
                     <h4>Explore</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="horoscope&Blogs.html">Horoscope & Blogs</a></li>
-                        <li><a href="contact.html">Book Now</a></li>
+                        <li><a href="horoscope.html">Horoscope & Blogs</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h4>Reach Us</h4>
+                    <h4>Contact Info</h4>
                     <ul>
                         <li><i class="fas fa-phone-alt" style="color:var(--saffron);"></i> <a href="tel:+919928139485">+91 99281 39485</a></li>
-                        <li><i class="fas fa-envelope" style="color:var(--saffron);"></i> <a href="mailto:PT.YUGALSHARMA45@GMAIL.COM">Email Pandit Ji</a></li>
+                        <li><i class="fas fa-envelope" style="color:var(--saffron);"></i> <a href="mailto:PT.YUGALSHARMA45@GMAIL.COM">PT.YUGALSHARMA45@GMAIL.COM</a></li>
                         <li><i class="fas fa-map-marker-alt" style="color:var(--saffron);"></i> <span>Vaishali Nagar, Jaipur</span></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                © 2026 <strong>PANDIT YUGAL ACHARYA</strong>. All Rights Reserved.
-            </div>
+            <div class="footer-bottom">© 2026 <strong>PANDIT YUGAL ACHARYA</strong>. All Rights Reserved.</div>
         </div>
     </footer>
 
@@ -215,10 +206,11 @@
     <script>
         AOS.init({ duration: 800, once: true });
 
-        function toggleMenu() {
-            const nav = document.getElementById('mainNav');
+        // EXACT INDEX LOGIC
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const nav = document.querySelector('.main-nav');
             nav.classList.toggle('is-open');
-        }
+        });
     </script>
 </body>
 </html>
