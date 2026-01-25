@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - PANDIT YUGAL ACHARYA</title>
+    <title>Our Services: Comprehensive Astrological Guidance - PANDIT YUGAL ACHARYA</title>
     <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700|Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -26,17 +26,17 @@
         * { box-sizing: border-box; }
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background: linear-gradient(180deg, var(--bg), #fff6ee);
             color: #111;
             line-height: 1.7; 
             font-size: 17px; 
             overflow-x: hidden;
         }
-        h1, h2, h3, h4 { font-family: 'Lora', serif; color: var(--accent-dark); }
+        h1, h2, h3, h4 { font-family: 'Lora', serif; color: var(--accent-dark); line-height: 1.2; }
         .container { max-width: var(--maxw); margin: 0 auto; padding: 0 30px; }
         
-        /* ===== HEADER (Synced with Index) ===== */
+        /* ===== HEADER (INDEX STYLE) ===== */
         header.site-header {
             padding: 12px 0;
             background: rgba(255, 255, 255, 0.95);
@@ -48,24 +48,24 @@
         }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; position: relative; }
         .brand a { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .brand .logo-img { width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(45deg, var(--gold), var(--saffron)); padding: 4px; border: 2px solid var(--gold-2); }
+        .brand .logo-img { width: 75px; height: 75px; border-radius: 50%; background: linear-gradient(45deg, var(--gold), var(--saffron)); padding: 5px; border: 3px solid var(--gold-2); transition: 0.3s; }
+        .brand h1 { margin: 0; font-size: 24px; font-weight: 700; color: var(--accent-dark); }
         
-        nav.main-nav { display: flex; gap: 5px; align-items: center; }
-        nav.main-nav a { padding: 8px 12px; text-decoration: none; color: var(--accent-dark); font-weight: 600; font-size: 15px; border-radius: 6px; transition: 0.3s; }
-        nav.main-nav a:hover { background: var(--accent-light); }
-        nav.main-nav a.active { color: var(--saffron); background: rgba(255, 153, 51, 0.1); }
+        nav.main-nav { display: flex; gap: 8px; align-items: center; }
+        nav.main-nav a { padding: 8px 14px; border-radius: 8px; color: var(--accent-dark); text-decoration: none; font-weight: 600; transition: 0.2s; }
+        nav.main-nav a:hover { background: rgba(212, 175, 55, 0.06); }
+        nav.main-nav a.active { background: rgba(212, 175, 55, 0.1); color: var(--saffron); }
 
-        .btn-cta { background: linear-gradient(90deg, var(--gold), var(--gold-2)); padding: 10px 20px; border-radius: 8px; text-decoration: none; color: #000; font-weight: 700; font-size: 14px; }
+        .btn-cta { background: linear-gradient(90deg, var(--gold), var(--gold-2)); padding: 12px 20px; border-radius: 10px; color: #111; font-weight: 700; text-decoration: none; box-shadow: 0 8px 25px rgba(212, 175, 55, 0.1); }
 
-        /* Mobile Toggle Button */
-        .menu-toggle { display: none; background: none; border: none; font-size: 30px; color: var(--accent-dark); cursor: pointer; }
+        /* MOBILE MENU TOGGLE */
+        .menu-toggle { display: none; background: transparent; border: none; color: var(--accent-dark); font-size: 30px; cursor: pointer; }
 
-        /* ===== MOBILE MENU CSS (Exact Index Logic) ===== */
         @media (max-width: 1000px) {
             .menu-toggle { display: block !important; }
-            .nav-wrap .btn-cta { display: none; }
-            nav.main-nav {
-                display: none; 
+            .nav-wrap > .btn-cta, nav.main-nav { display: none; }
+            nav.main-nav.is-open {
+                display: flex !important;
                 flex-direction: column;
                 position: absolute;
                 top: 100%;
@@ -76,28 +76,41 @@
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
                 z-index: 999;
             }
-            nav.main-nav.is-open { display: flex !important; }
-            nav.main-nav a { width: 100%; text-align: center; padding: 12px 0; border-bottom: 1px solid #f9f9f9; }
         }
 
-        /* ===== SERVICES CONTENT ===== */
+        /* ===== SERVICES CONTENT (ALL RESTORED) ===== */
         .services-hero { text-align: center; padding: 60px 0; }
         .services-hero h1 { font-size: 50px; margin-bottom: 15px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .service-card { padding: 40px; background: #fff; border-radius: var(--radius); border-top: 4px solid var(--gold); box-shadow: var(--shadow-medium); display: flex; flex-direction: column; justify-content: space-between; }
-        .service-card .icon { font-size: 40px; margin-bottom: 20px; }
+        .services-hero p { font-size: 22px; color: var(--muted); max-width: 900px; margin: 0 auto; }
 
-        /* ===== MASTER FOOTER (Working Links) ===== */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 50px; }
+        .service-card { 
+            background: var(--card); padding: 40px; border-radius: var(--radius); 
+            box-shadow: var(--shadow-medium); border-top: 4px solid var(--gold); 
+            display: flex; flex-direction: column; justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-card .icon { font-size: 45px; color: var(--saffron); margin-bottom: 20px; }
+        .service-card h3 { font-size: 26px; margin-top: 0; }
+        .service-card ul { padding-left: 20px; color: var(--muted); margin: 15px 0; }
+
+        /* ===== MASTER THEMED FOOTER ===== */
         footer { background: #fff3e6; color: var(--accent-dark); padding: 80px 0 30px; margin-top: 100px; border-top: 5px solid var(--saffron); position: relative; z-index: 10; }
         footer::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(var(--gold) 0.5px, transparent 0.5px); background-size: 30px 30px; opacity: 0.15; pointer-events: none; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; position: relative; }
         .footer-col h4 { font-size: 20px; margin-bottom: 25px; font-weight: 700; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
-        .footer-col li { margin-bottom: 15px; display: flex; align-items: center; gap: 12px; color: #5a4033; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; color: #5a4033; }
         .footer-col a { color: #5a4033; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .footer-col a:hover { color: var(--saffron); transform: translateX(5px); }
         .footer-social-wrap { display: flex; gap: 12px; margin-top: 25px; }
-        .footer-social-wrap a { width: 40px; height: 40px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--gold); color: var(--accent-dark); font-size: 18px; }
-        .footer-bottom { border-top: 1px solid var(--gold); padding-top: 30px; text-align: center; margin-top: 50px; }
+        .footer-social-wrap a { width: 40px; height: 40px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; border-radius: 10px; color: var(--accent-dark); border: 1px solid var(--gold); font-size: 18px; transition: 0.3s; }
+        .footer-social-wrap a:hover { background: var(--saffron); color: white; transform: translateY(-3px); }
+        .footer-bottom { border-top: 1px solid var(--gold); padding-top: 30px; text-align: center; position: relative; }
+        .disclaimer { font-size: 13px; color: #7a6b63; margin-top: 15px; font-style: italic; max-width: 900px; margin-inline: auto; }
+
+        @media (max-width: 1000px) { .footer-grid { grid-template-columns: 1fr; text-align: center; } .footer-col li { justify-content: center; } .footer-social-wrap { justify-content: center; } }
     </style>
 </head>
 <body>
@@ -111,7 +124,6 @@
                         <h1>PANDIT YUGAL ACHARYA</h1>
                     </a>
                 </div>
-                
                 <nav class="main-nav">
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
@@ -120,12 +132,8 @@
                     <a href="honors.html">Honors</a>
                     <a href="contact.html">Contact</a>
                 </nav>
-
-                <a href="contact.html" class="btn-cta">Book Now</a>
-
-                <button class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <a href="contact.html" class="btn-cta">Book Consultation</a>
+                <button class="menu-toggle"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </header>
@@ -133,34 +141,99 @@
     <main class="container">
         <section class="services-hero" data-aos="fade-down">
             <h1>Our Core Astrological Services</h1>
-            <p>Guiding you through life's challenges with authentic Vedic wisdom.</p>
+            <p>Leverage Vedic wisdom for clarity, peace, and prosperity in every aspect of your life.</p>
         </section>
 
         <section class="services-grid">
             <div class="service-card" data-aos="fade-up">
                 <div>
                     <div class="icon">📜</div>
-                    <h3>Kundali Analysis</h3>
-                    <p>Deep insights into your birth chart and planetary influences.</p>
+                    <h3>Comprehensive Kundali Analysis</h3>
+                    <p>**Clarity for Life Decisions:** Deep analysis of your birth chart to understand your destiny.</p>
+                    <ul>
+                        <li>Detailed analysis of 12 Houses.</li>
+                        <li>Dasha & Mahadasha Predictions.</li>
+                        <li>Marriage, Health, & Career Insights.</li>
+                    </ul>
                 </div>
-                <a href="contact.html" class="btn-cta">Inquire Now</a>
+                <a href="contact.html" class="btn-cta">Book This Service</a>
             </div>
+
             <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                 <div>
-                    <div class="icon">🏠</div>
-                    <h3>Vastu Shastra</h3>
-                    <p>Creating harmony and prosperity in your living and working spaces.</p>
+                    <div class="icon">✨</div>
+                    <h3>Problem Solutions & Remedies</h3>
+                    <p>**Immediate Relief:** Powerful remedies (Upay) to mitigate planetary malefic effects.</p>
+                    <ul>
+                        <li>Gemstone & Rudraksha suggestions.</li>
+                        <li>Tailored Mantra Jaap & Charity.</li>
+                        <li>Grah Shanti Rituals.</li>
+                    </ul>
                 </div>
-                <a href="contact.html" class="btn-cta">Inquire Now</a>
+                <a href="contact.html" class="btn-cta">Book This Service</a>
             </div>
+
             <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                 <div>
-                    <div class="icon">✨</div>
-                    <h3>Remedial Pooja</h3>
-                    <p>Spiritual rituals to align your energies with the cosmos.</p>
+                    <div class="icon">💍</div>
+                    <h3>Marriage & Compatibility Matching</h3>
+                    <p>**Harmony in Relationships:** Detailed Gun Milan and analysis of marital quality.</p>
+                    <ul>
+                        <li>Comprehensive Koota analysis.</li>
+                        <li>Manglik Dosh assessment.</li>
+                        <li>Wedding Muhurat Selection.</li>
+                    </ul>
                 </div>
-                <a href="contact.html" class="btn-cta">Inquire Now</a>
+                <a href="contact.html" class="btn-cta">Book This Service</a>
             </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div>
+                    <div class="icon">💼</div>
+                    <h3>Business, Career, & Finance</h3>
+                    <p>**Path to Prosperity:** Guidance for career suitablity and financial growth.</p>
+                    <ul>
+                        <li>Favorable Industry Selection.</li>
+                        <li>Investment Timing analysis.</li>
+                        <li>Overcoming Financial blocks.</li>
+                    </ul>
+                </div>
+                <a href="contact.html" class="btn-cta">Book This Service</a>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div>
+                    <div class="icon">🏡</div>
+                    <h3>Vastu & Property Guidance</h3>
+                    <p>**Prosperity at Home:** Harmonize your space for positive energy flow.</p>
+                    <ul>
+                        <li>Vastu check for Home/Office.</li>
+                        <li>Non-destructive remedies.</li>
+                        <li>Auspicious Direction guidance.</li>
+                    </ul>
+                </div>
+                <a href="contact.html" class="btn-cta">Book This Service</a>
+            </div>
+
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div>
+                    <div class="icon">⏱️</div>
+                    <h3>Muhurat & Auspicious Timing</h3>
+                    <p>**Success in Endeavors:** Powerful timing for starting new ventures.</p>
+                    <ul>
+                        <li>Business Launch Muhurat.</li>
+                        <li>Griha Pravesh Timing.</li>
+                        <li>Electional Astrology.</li>
+                    </ul>
+                </div>
+                <a href="contact.html" class="btn-cta">Book This Service</a>
+            </div>
+        </section>
+
+        <section class="callout-section" data-aos="zoom-in" style="background: var(--accent-dark); color: #fff; padding: 60px; border-radius: var(--radius); text-align: center; margin-top: 80px;">
+            <h2 style="color: var(--gold-2); font-size: 42px;">Ready for Clarity?</h2>
+            <p style="font-size: 20px; max-width: 800px; margin: 0 auto 30px;">Connect with Pandit Yugal Acharya for personalized guidance rooted in traditional expertise.</p>
+            <a href="contact.html" class="btn-cta" style="background: var(--saffron); color: #fff;">Schedule Consultation Now</a>
         </section>
     </main>
 
@@ -169,7 +242,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>Pandit Yugal Acharya</h4>
-                    <p>Spiritual guidance and Vedic wisdom for a prosperous life.</p>
+                    <p>Authentic Vedic Astrology and Vastu guidance to navigate life's journey. Serving with wisdom since 2012.</p>
                     <div class="footer-social-wrap">
                         <a href="https://www.facebook.com/yugal.sharma.583" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/yugalaacharya" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -179,18 +252,24 @@
                         </a>
                     </div>
                 </div>
-
                 <div class="footer-col">
                     <h4>Explore</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="horoscope.html">Horoscope & Blogs</a></li>
+                        <li><a href="Horoscope&Blogs.html">Horoscope & Blogs</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col">
-                    <h4>Contact Info</h4>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Kundali Matching</a></li>
+                        <li><a href="services.html">Vastu Check</a></li>
+                        <li><a href="services.html">Remedial Pooja</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Reach Us</h4>
                     <ul>
                         <li><i class="fas fa-phone-alt" style="color:var(--saffron);"></i> <a href="tel:+919928139485">+91 99281 39485</a></li>
                         <li><i class="fas fa-envelope" style="color:var(--saffron);"></i> <a href="mailto:PT.YUGALSHARMA45@GMAIL.COM">PT.YUGALSHARMA45@GMAIL.COM</a></li>
@@ -204,9 +283,8 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
-
-        // EXACT INDEX LOGIC
+        AOS.init({ duration: 900, once: true });
+        
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             const nav = document.querySelector('.main-nav');
             nav.classList.toggle('is-open');
