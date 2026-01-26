@@ -24,22 +24,21 @@
         .container { max-width: var(--maxw); margin: 0 auto; padding: 0 30px; }
         
         /* Header & Navigation */
-        header.site-header { padding: 12px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.04); background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 240, 0.95)); backdrop-filter: blur(6px); position: sticky; top: 0; z-index: 1000; }
-        .topbar { display: flex; justify-content: flex-end; font-size: 15px; color: var(--muted); padding: 6px 0; align-items: center; }
-        .topbar a { color: var(--muted); text-decoration: none; margin-left: 20px; }
+        header.site-header { padding: 12px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.04); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(6px); position: sticky; top: 0; z-index: 1000; }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; position: relative; }
         
         .brand a { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--accent-dark); }
-        .brand a .logo { width: 75px; height: 75px; border-radius: 50%; background: linear-gradient(45deg, var(--gold), var(--saffron)); padding: 5px; border: 3px solid var(--gold-2); box-shadow: var(--shadow-celestial-initial); }
+        .brand a .logo { width: 75px; height: 75px; border-radius: 50%; background: linear-gradient(45deg, var(--gold), var(--saffron)); padding: 5px; border: 3px solid var(--gold-2); box-shadow: var(--shadow-celestial-initial); transition: 0.3s; }
         .brand a .logo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        .brand a h1 { margin: 0; font-size: 24px; font-weight: 700; }
+        .brand a h1 { margin: 0; font-size: 24px; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
 
         nav.main-nav { display: flex; gap: 8px; align-items: center; }
         nav.main-nav a { padding: 8px 14px; border-radius: 8px; color: var(--accent-dark); text-decoration: none; font-weight: 600; transition: 0.2s; }
         nav.main-nav a:hover { background: rgba(212, 175, 55, 0.06); }
         nav.main-nav a[aria-current="page"] { background: rgba(212, 175, 55, 0.1); color: var(--saffron); }
 
-        .menu-toggle { display: none; background: none; border: none; font-size: 30px; cursor: pointer; color: var(--accent-dark); padding: 8px; }
+        /* Mobile Menu */
+        .menu-toggle { display: none; background: none; border: none; font-size: 30px; cursor: pointer; color: var(--accent-dark); padding: 8px; z-index: 1001; }
         .mobile-nav-links { display: none; flex-direction: column; width: 100%; background: #fff; position: absolute; top: 100%; left: 0; z-index: 999; box-shadow: var(--shadow-medium); }
         .mobile-nav-links.is-open { display: flex; }
         .mobile-nav-links a { padding: 15px 30px; text-decoration: none; color: var(--accent-dark); font-weight: 600; border-bottom: 1px solid #eee; }
@@ -62,12 +61,12 @@
         .cosmic-tree-wrap .profile-img { width: 400px; height: 400px; object-fit: cover; object-position: top; border-radius: 50%; border: 15px solid var(--gold); outline: 5px solid var(--card); z-index: 5; animation: reverse-rotate 100s linear infinite; }
         @keyframes reverse-rotate { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
 
-        /* Pillars & Content Blocks */
+        /* Pillars & Grid Content */
         .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .value-card { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-light); border-top: 5px solid var(--gold); transition: all 0.3s ease; }
+        .value-card { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-light); border-top: 5px solid var(--gold); }
         .value-card h4 { font-size: 26px; color: var(--saffron); margin-bottom: 15px; }
 
-        /* Timeline Section */
+        /* Timeline */
         .timeline-section { background: var(--accent-light); padding: 70px 0; }
         .timeline-section h2 { text-align: center; font-size: 40px; margin-bottom: 50px; }
         .timeline-events { max-width: 900px; margin: 0 auto; position: relative; }
@@ -75,11 +74,11 @@
         .timeline-item { display: flex; margin-bottom: 40px; position: relative; }
         .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
         .timeline-marker { width: 20px; height: 20px; background: var(--saffron); border: 3px solid var(--card); border-radius: 50%; position: absolute; top: 10px; left: 50%; margin-left: -10px; z-index: 10; }
-        .timeline-content { width: 45%; padding: 10px 20px; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-light); }
+        .timeline-content { width: 45%; padding: 20px; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-light); }
         .timeline-item:nth-child(even) .timeline-content { margin-right: 5%; text-align: right; }
         .timeline-item:nth-child(odd) .timeline-content { margin-left: 5%; text-align: left; }
 
-        /* Methodology Section */
+        /* Methodology */
         .methodology-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
         .step-card { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-light); border-left: 5px solid var(--accent-light); }
         .step-card h4 { display: flex; align-items: center; gap: 12px; font-size: 22px; }
@@ -96,7 +95,7 @@
         .cta-section h2 { color: var(--gold); font-size: 42px; margin-top: 0; }
         .cta-section p { max-width: 800px; margin: 0 auto 30px; font-size: 19px; color: #fef0cd; }
 
-        /* === NEW MASTER FOOTER === */
+        /* Footer */
         .master-footer { background: #fff3e6; color: #7a4c1d; padding: 80px 0 30px; margin-top: 50px; border-top: 5px solid #ff9933; position: relative; z-index: 10; font-family: 'Inter', sans-serif; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; }
         .footer-col h4 { font-size: 18px; margin-bottom: 25px; font-weight: 700; border-bottom: 2px solid #d4af37; display: inline-block; padding-bottom: 5px; }
@@ -110,6 +109,8 @@
         .footer-bottom { border-top: 1px solid #d4af37; padding-top: 30px; text-align: center; margin-top: 50px; font-size: 15px; }
 
         @media (max-width: 1000px) {
+            nav.main-nav { display: none; }
+            .menu-toggle { display: block; }
             .hero-about { grid-template-columns: 1fr; text-align: center; }
             .cosmic-tree-wrap { width: 380px; height: 380px; margin: 0 auto; order: -1; animation: none; }
             .cosmic-tree-wrap .profile-img { width: 300px; height: 300px; animation: none; }
@@ -117,8 +118,6 @@
             .timeline-marker { left: 20px; }
             .timeline-item { flex-direction: row !important; }
             .timeline-content { width: calc(100% - 60px); margin: 0 0 0 60px !important; text-align: left !important; }
-            .menu-toggle { display: block; }
-            .main-nav, .nav-wrap > .btn-cta { display: none; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .footer-col li, .footer-social-wrap { justify-content: center; }
         }
@@ -128,7 +127,8 @@
 
     <header class="site-header">
         <div class="container">
-            <div class="topbar"> 
+            <div class="topbar">
+          
             </div>
             <div class="nav-wrap">
                 <div class="brand">
@@ -141,13 +141,13 @@
                     <a href="index.html">Home</a>
                     <a href="about.html" aria-current="page">About</a>
                     <a href="services.html">Services</a>
-                   <a href="Horoscope&Blogs.html">Horoscope & Blogs</a>
+                    <a href="Horoscope&Blogs.html">Horoscope & Blogs</a>
                     <a href="honors.html">Honors</a>
                     <a href="contact.html">Contact</a>
                 </nav>
                 <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
                 <div class="mobile-nav-links" id="mobileNavLinks">
-                    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="honors.html">Honors</a><a href="contact.html">Contact</a>
+                    <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="Horoscope.html">Horoscope</a><a href="honors.html">Honors</a><a href="contact.html">Contact</a>
                 </div>
             </div>
         </div>
@@ -167,25 +167,23 @@
                 </div>
             </section>
 
-            <hr style="border:0; border-top:1px solid #ddd; margin:40px 0;">
-
             <section>
                 <h2 style="text-align:center;" data-aos="fade-up">The Pillars of Our Practice</h2>
                 <div class="values-grid">
                     <div class="value-card" data-aos="fade-up" data-aos-delay="100">
                         <div style="font-size:40px; color:var(--saffron);">🧘‍♂️</div>
                         <h4>आध्यात्मिक साधना (Spiritual Discipline)</h4>
-                        <p>हनुमान जी और गुरु कृपा से प्राप्त ज्ञान और **समर्पित साधक** के रूप में हमारी आध्यात्मिक यात्रा।</p>
+                        <p>हनुमान जी और गुरु कृपा से प्राप्त ज्ञान और समर्पित साधक के रूप में हमारी आध्यात्मिक यात्रा।</p>
                     </div>
                     <div class="value-card" data-aos="fade-up" data-aos-delay="200">
                         <div style="font-size:40px; color:var(--saffron);">📚</div>
                         <h4>परंपरागत ज्ञान (Traditional Knowledge)</h4>
-                        <p>**वैदिक ग्रंथों का गहन अध्ययन** कर समाज के सभी वर्गों को ज्योतिषीय ज्ञान से आलोकित करना।</p>
+                        <p>वैदिक ग्रंथों का गहन अध्ययन कर समाज के सभी वर्गों को ज्योतिषीय ज्ञान से आलोकित करना।</p>
                     </div>
                     <div class="value-card" data-aos="fade-up" data-aos-delay="300">
                         <div style="font-size:40px; color:var(--saffron);">💡</div>
                         <h4>सरल मार्गदर्शन (Simple Guidance)</h4>
-                        <p>**सरल और व्यावहारिक उपायों** के माध्यम से जटिल समस्याओं को हल करना और सकारात्मक परिवर्तन लाना।</p>
+                        <p>सरल और व्यावहारिक उपायों के माध्यम से सकारात्मक परिवर्तन लाना।</p>
                     </div>
                 </div>
             </section>
@@ -195,27 +193,9 @@
             <div class="container">
                 <h2 data-aos="fade-up">Education and Our Journey</h2>
                 <div class="timeline-events">
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h4>पारंपरिक शिक्षा (Traditional Education)</h4>
-                            <p>ज्ञान की शुरुआत **पारंपरिक संस्कृत शिक्षा प्रणाली** के अंतर्गत ज्ञानार्जन से हुई।</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h4>ज्योतिष आचार्य उपाधि (Jyotish Acharya Degree)</h4>
-                            <p>**जगतगुरु रामानंदाचार्य संस्कृत विश्वविद्यालय** से ज्योतिष आचार्य की प्रतिष्ठित उपाधि प्राप्त की।</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h4>25 वर्षों का गहन शोध (25 Years of Research)</h4>
-                            <p>पिछले 25 वर्षों से **कुंडली शोधन, पूजा-अनुष्ठान और प्राचीन वैदिक फलित ज्योतिष** पर शोध कार्य जारी।</p>
-                        </div>
-                    </div>
+                    <div class="timeline-item" data-aos="fade-left"><div class="timeline-marker"></div><div class="timeline-content"><h4>पारंपरिक शिक्षा</h4><p>ज्ञान की शुरुआत पारंपरिक संस्कृत शिक्षा प्रणाली से हुई।</p></div></div>
+                    <div class="timeline-item" data-aos="fade-right"><div class="timeline-marker"></div><div class="timeline-content"><h4>ज्योतिष आचार्य उपाधि</h4><p>जगतगुरु रामानंदाचार्य संस्कृत विश्वविद्यालय से प्रतिष्ठित उपाधि प्राप्त की।</p></div></div>
+                    <div class="timeline-item" data-aos="fade-left"><div class="timeline-marker"></div><div class="timeline-content"><h4>25 वर्षों का शोध</h4><p>पिछले 25 वर्षों से कुंडली शोधन और प्राचीन वैदिक ज्योतिष पर शोध जारी।</p></div></div>
                 </div>
             </div>
         </section>
@@ -224,32 +204,18 @@
             <section style="margin-top:60px;">
                 <h2 style="text-align:center;" data-aos="fade-up">Our Astrological Service Methodology</h2>
                 <div class="methodology-steps">
-                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="200">
-                        <h4><span>1</span> कुंडली का गूढ़ शोधन (Analysis)</h4>
-                        <p>हम सूक्ष्म और **गूढ़ ज्योतिषीय गणनाओं** का उपयोग कर कुंडली का पूर्ण शोधन करते हैं।</p>
-                    </div>
-                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="300">
-                        <h4><span>2</span> वैदिक फलादेश (Interpretation)</h4>
-                        <p>प्राचीन **वैदिक फलित ज्योतिष** के सिद्धांतों का गहन उपयोग कर सटीक फलादेश किया जाता है।</p>
-                    </div>
-                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="400">
-                        <h4><span>3</span> आत्म-विकास (Guidance)</h4>
-                        <p>हमारा ध्यान आत्म-विकास और **जीवन को सही दिशा** में मोड़ने पर होता है।</p>
-                    </div>
+                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="200"><h4><span>1</span> कुंडली का गूढ़ शोधन</h4><p>सूक्ष्म और गूढ़ ज्योतिषीय गणनाओं का उपयोग कर कुंडली का पूर्ण शोधन।</p></div>
+                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="300"><h4><span>2</span> वैदिक फलादेश</h4><p>प्राचीन वैदिक सिद्धांतों का उपयोग कर जीवन के हर पहलू का सटीक फलादेश।</p></div>
+                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="400"><h4><span>3</span> आत्म-विकास परामर्श</h4><p>हमारा ध्यान आत्म-विकास और जीवन को सही दिशा में मोड़ने पर होता है।</p></div>
+                    <div class="step-card" data-aos="zoom-in-up" data-aos-delay="500"><h4><span>4</span> पूजा-अनुष्ठान</h4><p>जटिल समस्याओं के लिए सरल और व्यावहारिक पूजा-अनुष्ठान बताए जाते हैं।</p></div>
                 </div>
             </section>
 
             <section>
                 <h2 style="font-size:40px;" data-aos="fade-up">Trust Received by Society</h2>
                 <div class="testimonials-grid">
-                    <div class="testimonial-card" data-aos="flip-up" data-aos-delay="100">
-                        <blockquote>"आचार्य जी की सहज भाषा और स्पष्ट विचारधारा से मुझे अपने जीवन की दिशा मिली।"</blockquote>
-                        <span class="author">— Priya K.</span>
-                    </div>
-                    <div class="testimonial-card" data-aos="flip-up" data-aos-delay="200">
-                        <blockquote>"कुंडली शोधन की उनकी विशेषज्ञता अतुलनीय है। उन्होंने जटिल समस्या को हल कर दिया।"</blockquote>
-                        <span class="author">— Rahul S.</span>
-                    </div>
+                    <div class="testimonial-card" data-aos="flip-up" data-aos-delay="100"><blockquote>"आचार्य जी की सहज भाषा और स्पष्ट विचारधारा से मुझे अपने जीवन की दिशा मिली।"</blockquote><span class="author">— Priya K.</span></div>
+                    <div class="testimonial-card" data-aos="flip-up" data-aos-delay="200"><blockquote>"कुंडली शोधन की विशेषज्ञता अतुलनीय है। उन्होंने जटिल समस्या को हल कर दिया।"</blockquote><span class="author">— Rahul S.</span></div>
                 </div>
             </section>
 
@@ -274,31 +240,9 @@
                         <a href="https://wa.me/919928139485" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h4>Explore Site</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Pandit Ji</a></li>
-                        <li><a href="horoscope.html">Horoscope</a></li>
-                        <li><a href="contact.html">Book Appointment</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Top Services</h4>
-                    <ul>
-                        <li>Kundali Matching</li>
-                        <li>Vastu Consultation</li>
-                        <li>Grah Pravesh Pooja</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Get In Touch</h4>
-                    <ul>
-                        <li><i class="fas fa-phone-alt"></i> +91 99281 39485</li>
-                        <li><i class="fas fa-envelope"></i> PT.YUGALSHARMA45@GMAIL.COM</li>
-                        <li>Vaishali Nagar, Jaipur</li>
-                    </ul>
-                </div>
+                <div class="footer-col"><h4>Explore Site</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Pandit Ji</a></li><li><a href="Horoscope.html">Horoscope</a></li><li><a href="contact.html">Book Appointment</a></li></ul></div>
+                <div class="footer-col"><h4>Top Services</h4><ul><li>Kundali Matching</li><li>Vastu Consultation</li><li>Grah Pravesh Pooja</li></ul></div>
+                <div class="footer-col"><h4>Get In Touch</h4><ul><li><i class="fas fa-phone-alt"></i> +91 99281 39485</li><li>PT.YUGALSHARMA45@GMAIL.COM</li><li>Vaishali Nagar, Jaipur</li></ul></div>
             </div>
             <div class="footer-bottom"><div>© 2026 <strong>PANDIT YUGAL ACHARYA</strong>. All Rights Reserved.</div></div>
         </div>
