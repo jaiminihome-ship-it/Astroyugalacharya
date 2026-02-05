@@ -2,92 +2,107 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Connect | Pt. Yugal Acharya</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     :root {
       --bg-dark: #050505;
-      --card-glass: rgba(25, 25, 25, 0.8);
       --gold-grad: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7);
       --gold-accent: #BF953F;
-      --text-light: #ffffff;
-      --text-gold: #FCF6BA;
+      --card-glass: rgba(25, 25, 25, 0.85);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
     body {
       font-family: 'Outfit', sans-serif;
       background-color: var(--bg-dark);
       background-image: 
         radial-gradient(circle at 20% 30%, rgba(191, 149, 63, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(179, 135, 40, 0.1) 0%, transparent 50%),
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23BF953F' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      color: var(--text-light);
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23BF953F' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      color: #ffffff;
       min-height: 100vh;
-      display: flex; justify-content: center; align-items: center; padding: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* लंबी लिस्ट के लिए टॉप अलाइनमेंट */
+      padding: clamp(20px, 5vw, 60px) 15px;
     }
 
-    .container { width: 100%; max-width: 450px; text-align: center; position: relative; z-index: 1; }
+    /* अडैप्टिव कंटेनर जो डिवाइस के हिसाब से फैलता/सिकुड़ता है */
+    .container { 
+      width: 100%; 
+      max-width: 500px; 
+      text-align: center; 
+      animation: fadeIn 1s ease-out;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    .profile-header { margin-bottom: 40px; }
-    
-    /* === यहाँ किया है बड़ा बदलाव (Size Adjustment) === */
+    /* रिस्पॉन्सिव प्रोफाइल रिंग */
     .profile-img-container {
       position: relative;
-      width: 260px; /* इसे 260px कर दिया गया है ताकि चेहरा पूरा दिखे */
-      height: 260px;
-      margin: 0 auto 30px; /* मार्जिन भी थोड़ा बढ़ाया */
+      width: clamp(180px, 55vw, 260px); 
+      height: clamp(180px, 55vw, 260px);
+      margin: 0 auto 30px;
     }
     
     .profile-img-container::before {
         content: '';
         position: absolute;
-        top: -10px; left: -10px; right: -10px; bottom: -10px;
+        top: -8px; left: -8px; right: -8px; bottom: -8px;
         background: var(--gold-grad);
         border-radius: 50%;
-        z-index: -1;
         animation: spin 8s linear infinite;
+        filter: blur(8px);
         opacity: 0.8;
-        filter: blur(10px);
     }
     @keyframes spin { 100% { transform: rotate(360deg); } }
 
     .profile-img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      /* फोटो को थोड़ा नीचे खिसकाया ताकि चेहरा सेंटर में आए */
-      object-position: center top; 
-      border: 6px solid var(--bg-dark);
-      box-shadow: 0 0 25px rgba(191, 149, 63, 0.5);
+      object-position: top center;
+      border: 5px solid var(--bg-dark);
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 25px rgba(191, 149, 63, 0.4);
     }
-    /* ========================================== */
 
+    /* Fluid Typography: स्क्रीन के हिसाब से फॉन्ट बदलता है */
     .user-name {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 34px;
-      font-weight: 700;
-      margin-bottom: 10px;
+      font-size: clamp(26px, 8vw, 40px);
       background: var(--gold-grad);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .user-bio {
+      color: #FCF6BA;
+      font-size: clamp(14px, 4vw, 17px);
+      margin-bottom: 35px;
+      opacity: 0.9;
       letter-spacing: 1px;
     }
-    .user-bio { font-size: 16px; color: var(--text-gold); opacity: 0.9; font-weight: 400; letter-spacing: 1px; }
 
+    /* प्रीमियम शाइन बटन */
     .hero-btn {
       position: relative;
       display: flex; align-items: center; justify-content: center; gap: 12px;
-      width: 100%; padding: 22px; margin-bottom: 35px;
-      background: var(--gold-grad); color: var(--bg-dark);
-      text-decoration: none; border-radius: 20px;
-      font-weight: 800; font-size: 20px;
-      box-shadow: 0 10px 30px rgba(191, 149, 63, 0.4);
-      overflow: hidden; transition: transform 0.3s;
+      width: 100%; padding: clamp(18px, 5vw, 24px); margin-bottom: 30px;
+      background: var(--gold-grad); color: #050505;
+      text-decoration: none; border-radius: 18px;
+      font-weight: 800; font-size: clamp(17px, 5vw, 21px);
+      box-shadow: 0 10px 30px rgba(191, 149, 63, 0.3);
+      overflow: hidden;
       border: 2px solid var(--gold-accent);
+      transition: all 0.3s ease;
     }
     
     .hero-btn::after {
@@ -99,91 +114,89 @@
         animation: shimmer 3s infinite;
     }
     @keyframes shimmer { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
+    .hero-btn:hover { transform: scale(1.02); box-shadow: 0 15px 40px rgba(191, 149, 63, 0.5); }
 
-    .hero-btn:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 40px rgba(191, 149, 63, 0.6); }
-
-    .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    /* अडैप्टिव ग्रिड */
+    .links-grid { 
+      display: grid; 
+      grid-template-columns: repeat(2, 1fr); 
+      gap: clamp(10px, 3vw, 20px); 
+      width: 100%;
+    }
 
     .link-card {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 25px 15px; background: var(--card-glass);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(191, 149, 63, 0.3); border-radius: 22px;
-      text-decoration: none; color: var(--text-light);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      background: var(--card-glass);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(191, 149, 63, 0.2);
+      padding: clamp(15px, 4vw, 25px) 10px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
     }
     
-    .link-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--text-gold);
-      background: linear-gradient(135deg, rgba(191, 149, 63, 0.2), rgba(25,25,25,0.9));
-      box-shadow: 0 20px 40px -10px rgba(191, 149, 63, 0.5);
+    .link-card:hover { 
+      border-color: var(--gold-accent);
+      transform: translateY(-5px);
+      background: rgba(191, 149, 63, 0.1);
     }
-    
-    .card-icon { font-size: 34px; margin-bottom: 15px; color: var(--gold-accent); transition: 0.3s; filter: drop-shadow(0 0 5px rgba(191, 149, 63, 0.3)); }
-    .link-card:hover .card-icon { transform: scale(1.1); color: var(--text-gold); filter: drop-shadow(0 0 10px rgba(252, 246, 186, 0.7)); }
-    .card-title { font-weight: 600; font-size: 15px; letter-spacing: 0.5px; }
 
-    .yt:hover .card-icon { color: #FF0000; filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6)); }
+    .card-icon { font-size: clamp(26px, 7vw, 34px); color: var(--gold-accent); }
+    .card-title { font-size: clamp(13px, 3.5vw, 15px); font-weight: 600; }
 
-    .footer { margin-top: 50px; font-size: 13px; color: var(--gold-accent); opacity: 0.7; letter-spacing: 2px; font-weight: 600; }
+    .footer { margin-top: 50px; opacity: 0.7; font-size: 12px; letter-spacing: 2px; font-weight: 600; }
+
+    /* बड़ी स्क्रीन (Desktop) के लिए अतिरिक्त सुधार */
+    @media (min-width: 1024px) {
+      .container { max-width: 550px; }
+      .links-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+    }
   </style>
 </head>
 <body>
-
-<div class="container">
-  <header class="profile-header">
+  <div class="container">
     <div class="profile-img-container">
       <img src="https://i.ibb.co/99zpfNsD/Gemini-Generated-Image-odxur1odxur1odxu.png" alt="Pt. Yugal Acharya" class="profile-img">
     </div>
+    
     <h1 class="user-name">पं. युगल आचार्य</h1>
     <p class="user-bio">वैदिक ज्योतिष • वास्तु • कर्मकांड विशेषज्ञ</p>
-  </header>
 
-  <main>
-    <a href="https://api.whatsapp.com/send/?phone=919928139485&text=Hello+Pandit+Ji&type=phone_number&app_absent=0" class="hero-btn" target="_blank">
-      <i class="fab fa-whatsapp"></i>
-      सीधा संपर्क करें (Book Now)
+    <a href="https://api.whatsapp.com/send/?phone=919928139485&text=Hello+Pandit+Ji" class="hero-btn" target="_blank">
+      <i class="fab fa-whatsapp"></i> संपर्क करें (Book Now)
     </a>
 
     <div class="links-grid">
-      <a href="https://www.youtube.com/@astrotvjaipur" class="link-card yt" target="_blank">
-        <i class="fab fa-youtube card-icon"></i>
-        <span class="card-title">YouTube चैनल</span>
+      <a href="https://www.youtube.com/@AstroTVJaipur" class="link-card" target="_blank">
+        <i class="fab fa-youtube card-icon"></i><span class="card-title">YouTube</span>
       </a>
-
-      <a href="https://Astroyugalacharya.in" class="link-card web" target="_blank">
-        <i class="fas fa-globe card-icon"></i>
-        <span class="card-title">वेबसाइट</span>
+      
+      <a href="https://Astroyugalacharya.in" class="link-card" target="_blank">
+        <i class="fas fa-globe card-icon"></i><span class="card-title">वेबसाइट</span>
       </a>
-
-      <a href="https://www.instagram.com/yugalaacharya" class="link-card insta" target="_blank">
-        <i class="fab fa-instagram card-icon"></i>
-        <span class="card-title">Instagram</span>
+      
+      <a href="https://www.instagram.com/yugalaacharya" class="link-card" target="_blank">
+        <i class="fab fa-instagram card-icon"></i><span class="card-title">Instagram</span>
       </a>
-
-      <a href="https://www.facebook.com/yugal.sharma.583" class="link-card fb" target="_blank">
-        <i class="fab fa-facebook-f card-icon"></i>
-        <span class="card-title">Facebook</span>
+      
+      <a href="https://www.facebook.com/yugal.sharma.583" class="link-card" target="_blank">
+        <i class="fab fa-facebook-f card-icon"></i><span class="card-title">Facebook</span>
       </a>
-
-      <a href="https://share.google/oQ3ktVvgQcR6gK0nY" class="link-card gbiz" target="_blank">
-        <i class="fab fa-google card-icon"></i>
-        <span class="card-title">Google प्रोफाइल</span>
+      
+      <a href="https://share.google/oQ3ktVvgQcR6gK0nY" class="link-card" target="_blank">
+        <i class="fab fa-google card-icon"></i><span class="card-title">प्रोफ़ाइल</span>
       </a>
-
-      <a href="https://share.google/KOFnTMhFfONaQg7Bj" class="link-card map" target="_blank">
-        <i class="fas fa-map-marker-alt card-icon"></i>
-        <span class="card-title">लोकेशन</span>
+      
+      <a href="https://www.google.com/maps/place/Astrologer+Yugal+acharya/@26.9060564,75.7428486,17z/data=!3m1!4b1!4m6!3m5!1s0x396db569ff12f825:0xf679324f5e3cc21b!8m2!3d26.9060516!4d75.7454235!16s%2Fg%2F11h0lkx004?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D" class="link-card" target="_blank">
+        <i class="fas fa-map-marker-alt card-icon"></i><span class="card-title">लोकेशन</span>
       </a>
     </div>
-  </main>
-
-  <footer class="footer">
-    <p>॥ शुभम् भवतु ॥</p>
-    <p style="margin-top:8px; font-size: 11px; opacity: 0.5;"> </p>
-  </footer>
-</div>
-
+    
+    <div class="footer">॥ शुभम् भवतु ॥</div>
+  </div>
 </body>
 </html>
