@@ -1,314 +1,1814 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Horoscope & Blogs - Pandit Yugal Acharya</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horoscope & Blogs - Pandit Yugal Acharya</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700|Lora:400,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700,800|Lora:400,500,600,700|Tiro+Devanagari+Hindi:400,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-  <style>
-    :root {
-      --saffron: #ff9933; --gold: #d4af37; --gold-2: #f3c95a;
-      --bg: #fffaf4; --card: #fff; --muted: #6b6b6b;
-      --accent-dark: #7a4c1d; --accent-light: #fef0cd;
-      --maxw: 1500px; --radius: 12px;
-      --shadow-medium: 0 16px 50px rgba(16, 24, 40, 0.08);
-    }
+    <style>
+        :root {
+            --saffron: #FF9933;
+            --saffron-light: #FFB866;
+            --saffron-dark: #E07B00;
+            --gold: #D4AF37;
+            --gold-light: #F3D97A;
+            --gold-pale: #FEF6E0;
+            --maroon: #7A1F1F;
+            --maroon-dark: #4A0E0E;
+            --maroon-light: #A0522D;
+            --cream: #FFFBF5;
+            --cream-warm: #FFF8EE;
+            --cream-dark: #F5EAD6;
+            --ink: #1A0F0A;
+            --ink-soft: #4A3728;
+            --muted: #8B7355;
+            --muted-light: #B8A68A;
+            --card-bg: #FFFFFF;
+            --card-shadow: 0 8px 40px rgba(74, 14, 14, 0.08), 0 2px 8px rgba(74, 14, 14, 0.04);
+            --card-shadow-hover: 0 20px 60px rgba(74, 14, 14, 0.15), 0 6px 20px rgba(74, 14, 14, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --maxw: 1500px;
+            --font-body: 'Inter', sans-serif;
+            --font-display: 'Lora', serif;
+            --font-hindi: 'Tiro Devanagari Hindi', 'Noto Sans Devanagari', 'Lora', serif;
+        }
 
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: "Inter", sans-serif; background: linear-gradient(180deg, var(--bg), #fff6ee); color: #111; line-height: 1.7; overflow-x: hidden; }
-    h1, h2, h3, h4 { font-family: "Lora", serif; color: var(--accent-dark); }
-    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 30px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* ===== HEADER & MOBILE MENU ===== */
-    header.site-header { padding: 12px 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(6px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
-    .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-    .brand a { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--accent-dark); }
-    .brand .logo-img { width: 65px; height: 65px; border-radius: 50%; background: linear-gradient(45deg, var(--gold), var(--saffron)); padding: 4px; border: 2px solid var(--gold-2); }
-    
-    nav.main-nav { display: flex; gap: 5px; }
-    nav.main-nav a { padding: 8px 12px; text-decoration: none; color: var(--accent-dark); font-weight: 600; font-size: 15px; border-radius: 6px; transition: 0.3s; }
-    nav.main-nav a.active { color: var(--saffron); background: rgba(255, 153, 51, 0.1); }
-    
-    .menu-toggle { display: none; background: none; border: none; font-size: 24px; color: var(--accent-dark); cursor: pointer; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* ===== HERO ===== */
-    .horoscope-hero { text-align: center; padding: 70px 0; background: var(--accent-light); border-bottom: 2px solid var(--gold); }
-    .horoscope-hero h1 { font-size: 52px; margin-bottom: 15px; }
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    /* ===== HOROSCOPE SECTION ===== */
-    .horoscope-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; margin-top: 60px; }
-    .panel-card { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-medium); border-top: 4px solid var(--saffron); }
-    .zodiac-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .zodiac-btn { padding: 15px; border: 1px solid #eee; background: #fff; border-radius: 12px; cursor: pointer; text-align: center; transition: 0.3s; }
-    .zodiac-btn.active { background: #fff9f0; border-color: var(--saffron); transform: translateY(-3px); }
-    .horoscope-output { background: var(--accent-light); padding: 35px; border-radius: var(--radius); border-bottom: 4px solid var(--gold); position: sticky; top: 120px; }
+        /* ---- Cosmic Starfield Background ---- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(1.5px 1.5px at 5% 15%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1px 1px at 12% 55%, rgba(255, 255, 255, 0.45) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 22% 8%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1px 1px at 30% 75%, rgba(255, 255, 255, 0.4) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 38% 35%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1px 1px at 45% 85%, rgba(255, 255, 255, 0.45) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 52% 20%, rgba(255, 255, 255, 0.55) 40%, transparent 41%),
+                radial-gradient(1px 1px at 58% 60%, rgba(255, 255, 255, 0.4) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 65% 12%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1px 1px at 70% 50%, rgba(255, 255, 255, 0.45) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 78% 78%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1px 1px at 84% 25%, rgba(255, 255, 255, 0.4) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 90% 65%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1px 1px at 95% 40%, rgba(255, 255, 255, 0.45) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 15% 90%, rgba(255, 255, 255, 0.4) 40%, transparent 41%),
+                radial-gradient(1px 1px at 35% 5%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 50% 95%, rgba(255, 255, 255, 0.45) 40%, transparent 41%),
+                radial-gradient(1px 1px at 68% 5%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 82% 88%, rgba(255, 255, 255, 0.4) 40%, transparent 41%),
+                radial-gradient(1px 1px at 8% 45%, rgba(255, 255, 255, 0.45) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 25% 65%, rgba(255, 255, 255, 0.4) 40%, transparent 41%),
+                radial-gradient(1px 1px at 42% 45%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 60% 30%, rgba(255, 255, 255, 0.45) 40%, transparent 41%),
+                radial-gradient(1px 1px at 75% 55%, rgba(255, 255, 255, 0.4) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 88% 15%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1px 1px at 5% 70%, rgba(255, 255, 255, 0.45) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 18% 30%, rgba(255, 255, 255, 0.5) 40%, transparent 41%),
+                radial-gradient(1px 1px at 32% 90%, rgba(255, 255, 255, 0.4) 40%, transparent 41%),
+                radial-gradient(1.5px 1.5px at 47% 10%, rgba(255, 255, 255, 0.55) 40%, transparent 41%),
+                radial-gradient(1px 1px at 55% 70%, rgba(255, 255, 255, 0.45) 40%, transparent 41%),
+                linear-gradient(180deg, #0D0603 0%, #1A0D06 50%, #0D0603 100%);
+            opacity: 0.035;
+            z-index: 0;
+        }
 
-    /* ===== BADA DROPDOWN MODAL (HOROSCOPE) ===== */
-    .sheet-panel { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); background: #fff; width: 90%; max-width: 550px; border-radius: 24px; box-shadow: 0 30px 90px rgba(0,0,0,0.3); padding: 40px; z-index: 2100; display: none; transition: 0.3s; border-top: 8px solid var(--saffron); }
-    .sheet-open .sheet-panel { display: block; transform: translate(-50%, -50%) scale(1); }
-    .type-switcher { display: flex; background: #f4f4f4; padding: 8px; border-radius: 16px; margin-bottom: 30px; }
-    .type-btn { flex: 1; padding: 14px; border: none; background: none; font-weight: 700; cursor: pointer; border-radius: 12px; font-size: 18px; }
-    .type-btn.active { background: var(--saffron); color: #fff; box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3); }
-    .select-group { margin-bottom: 25px; }
-    select { width: 100%; padding: 15px; border-radius: 12px; border: 2px solid #eee; font-size: 17px; background: #fafafa; }
-    .btn-fetch { width: 100%; padding: 18px; background: linear-gradient(90deg, var(--gold), var(--gold-2)); color: #000; border: none; border-radius: 14px; font-weight: 700; font-size: 20px; cursor: pointer; }
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse at 20% 10%, rgba(255, 153, 51, 0.04) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 30%, rgba(212, 175, 55, 0.04) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 80%, rgba(122, 31, 31, 0.04) 0%, transparent 55%),
+                radial-gradient(ellipse at 5% 60%, rgba(255, 153, 51, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 75%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+        }
 
-    /* ===== BLOG LAYOUT ===== */
-    .blog-layout { display: grid; grid-template-columns: 300px 1fr; gap: 40px; margin-top: 40px; }
-    .blog-sidebar { background: var(--card); padding: 25px; border-radius: var(--radius); box-shadow: var(--shadow-medium); border-top: 4px solid var(--saffron); height: fit-content; }
-    .blog-sidebar h4 { font-size: 20px; margin-bottom: 15px; border-bottom: 2px solid var(--saffron); padding-bottom: 8px; }
-    .search-box { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; margin-bottom: 25px; }
-    .category-list { list-style: none; padding: 0; }
-    .category-item { padding: 12px 15px; margin-bottom: 8px; border-radius: 8px; cursor: pointer; transition: 0.3s; font-weight: 600; background: #fdfdfd; border: 1px solid #eee; }
-    .category-item.active { background: var(--accent-light); border-color: var(--saffron); color: var(--accent-dark); }
-    .blog-main { background: var(--card); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow-medium); border-top: 4px solid var(--gold); }
-    .blog-card { border-bottom: 1px solid #eee; padding: 30px 0; }
-    .read-more { color: var(--saffron); font-weight: 700; cursor: pointer; text-decoration: underline; }
+        .container {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 1;
+        }
 
-    /* ===== MASTER FOOTER (SET OFFICIAL) ===== */
-    footer { background: #fff3e6; color: var(--accent-dark); padding: 80px 0 30px; margin-top: 100px; border-top: 5px solid var(--saffron); position: relative; }
-    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; }
-    .footer-col h4 { font-size: 18px; margin-bottom: 20px; font-weight: 700; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
-    .footer-col ul { list-style: none; padding: 0; margin: 0; }
-    .footer-col li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; font-size: 14px; }
-    .footer-col a { color: #5a4033; text-decoration: none; font-weight: 600; }
-    .footer-social-wrap { display: flex; gap: 10px; margin-top: 20px; }
-    .footer-social-wrap a { width: 36px; height: 36px; background: #fef0cd; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid var(--gold); color: #7a4c1d; }
-    .footer-bottom { border-top: 1px solid var(--gold); padding-top: 25px; text-align: center; margin-top: 40px; font-size: 14px; }
+        /* ---- Decorative Divider ---- */
+        .divider-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin: 24px auto;
+            max-width: 400px;
+        }
+        .divider-ornament .line {
+            height: 2px;
+            flex: 1;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            border-radius: 2px;
+        }
+        .divider-ornament .diamond {
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        .divider-ornament .om {
+            font-size: 22px;
+            color: var(--gold);
+            flex-shrink: 0;
+            line-height: 1;
+            font-weight: 400;
+        }
 
-    /* RESPONSIVE MENU */
-    @media (max-width: 1100px) {
-      .menu-toggle { display: block; }
-      nav.main-nav { 
-        display: none; position: absolute; top: 100%; left: 0; right: 0; 
-        background: #fff; flex-direction: column; padding: 20px; border-top: 1px solid #eee; 
-      }
-      nav.main-nav.show { display: flex; }
-      .horoscope-layout, .footer-grid, .blog-layout { grid-template-columns: 1fr; }
-      .zodiac-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    
-    .modal { position:fixed; inset:0; background:rgba(0,0,0,0.7); display:none; align-items:center; justify-content:center; z-index:2000; padding: 20px; }
-    .modal-box { background:#fff; max-width:800px; width:100%; max-height:85vh; overflow:auto; border-radius:15px; padding:40px; position: relative; }
-    .sheet-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.5); display:none; z-index:2050; }
-    .sheet-open .sheet-backdrop { display:block; }
-  </style>
+        /* ============================================
+                   HEADER
+                   ============================================ */
+        header.site-header {
+            padding: 10px 0;
+            background: rgba(255, 251, 245, 0.92);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 2px 30px rgba(74, 14, 14, 0.06);
+        }
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .brand a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: var(--maroon);
+        }
+        .brand .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--maroon) 0%, var(--saffron) 100%);
+            padding: 3px;
+            border: 2.5px solid var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.35), 0 4px 12px rgba(74, 14, 14, 0.2);
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .brand a:hover .logo-img {
+            transform: scale(1.05) rotate(-3deg);
+        }
+        .brand h1 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--maroon);
+            line-height: 1.3;
+        }
+        .brand h1 span {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--saffron-dark);
+            font-weight: 600;
+        }
+
+        nav.main-nav {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+        nav.main-nav a {
+            padding: 10px 16px;
+            text-decoration: none;
+            color: var(--ink-soft);
+            font-weight: 600;
+            font-size: 14.5px;
+            border-radius: 50px;
+            transition: var(--transition);
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+        nav.main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2.5px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--saffron), var(--gold));
+            transition: width 0.35s;
+        }
+        nav.main-nav a:hover::after,
+        nav.main-nav a.active::after {
+            width: 60%;
+        }
+        nav.main-nav a:hover {
+            color: var(--saffron-dark);
+            background: rgba(255, 153, 51, 0.06);
+        }
+        nav.main-nav a.active {
+            color: var(--saffron-dark);
+            background: linear-gradient(135deg, rgba(255, 153, 51, 0.12), rgba(212, 175, 55, 0.08));
+            font-weight: 700;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            font-size: 22px;
+            color: var(--maroon);
+            cursor: pointer;
+            padding: 6px 12px;
+            transition: var(--transition);
+        }
+        .menu-toggle:hover {
+            background: var(--gold-pale);
+        }
+
+        /* ============================================
+                   HERO SECTION
+                   ============================================ */
+        .horoscope-hero {
+            text-align: center;
+            padding: 80px 0 60px;
+            background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .horoscope-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 153, 51, 0.08) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .horoscope-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(255, 153, 51, 0.12), rgba(212, 175, 55, 0.08));
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            color: var(--maroon);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero-badge i {
+            color: var(--saffron);
+            font-size: 14px;
+        }
+        .horoscope-hero h1 {
+            font-family: var(--font-display);
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 14px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+        }
+        .horoscope-hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--maroon) 20%, var(--saffron) 50%, var(--gold) 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .horoscope-hero p {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 550px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+        }
+
+        /* ============================================
+                   HOROSCOPE LAYOUT
+                   ============================================ */
+        .horoscope-layout {
+            display: grid;
+            grid-template-columns: 1.25fr 0.85fr;
+            gap: 40px;
+            margin-top: 50px;
+            align-items: start;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---- Panel Card ---- */
+        .panel-card {
+            background: var(--card-bg);
+            padding: 36px 28px 32px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-top: 5px solid var(--saffron);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .panel-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at top right, rgba(255, 153, 51, 0.06), transparent 65%);
+            border-radius: 0 0 0 180px;
+            pointer-events: none;
+        }
+        .panel-card:hover {
+            box-shadow: var(--card-shadow-hover);
+        }
+        .panel-card h2 {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .panel-card .subtitle {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        /* ---- Zodiac Grid ---- */
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        .zodiac-btn {
+            padding: 14px 10px 12px;
+            border: 1.5px solid rgba(212, 175, 55, 0.2);
+            background: var(--cream-warm);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-family: var(--font-body);
+        }
+        .zodiac-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 153, 51, 0.08), rgba(212, 175, 55, 0.04));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .zodiac-btn:hover::before {
+            opacity: 1;
+        }
+        .zodiac-btn:hover {
+            border-color: var(--saffron);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(255, 153, 51, 0.15);
+        }
+        .zodiac-btn.active {
+            border-color: var(--saffron);
+            background: linear-gradient(135deg, #FFF9F0, #FFF0D8);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(255, 153, 51, 0.25), 0 0 0 2px rgba(255, 153, 51, 0.15);
+        }
+        .zodiac-btn.active::before {
+            opacity: 1;
+        }
+        .zodiac-symbol-wrap {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--maroon) 0%, #5a1515 100%);
+            border: 2px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(122, 31, 31, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.15);
+            transition: var(--transition);
+            position: relative;
+        }
+        .zodiac-symbol-wrap::after {
+            content: '';
+            position: absolute;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            border: 1.5px dashed rgba(212, 175, 55, 0.35);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            animation: rotateRing 20s linear infinite;
+        }
+        @keyframes rotateRing {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+        .zodiac-symbol-wrap .symbol {
+            font-size: 22px;
+            color: var(--gold-light);
+            font-weight: 700;
+            line-height: 1;
+            text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+            position: relative;
+            z-index: 1;
+            font-family: var(--font-display);
+        }
+        .zodiac-btn.active .zodiac-symbol-wrap {
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+            box-shadow: 0 6px 20px rgba(255, 153, 51, 0.45), inset 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+        .zodiac-btn.active .zodiac-symbol-wrap .symbol {
+            color: #fff;
+            text-shadow: 0 0 18px rgba(255, 255, 255, 0.7);
+        }
+        .zodiac-name-hindi {
+            font-family: var(--font-hindi);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--maroon);
+            line-height: 1.3;
+            position: relative;
+            z-index: 1;
+            display: block;
+        }
+        .zodiac-name-en {
+            font-size: 10px;
+            color: var(--muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ---- Horoscope Output Panel ---- */
+        .horoscope-output {
+            background: linear-gradient(160deg, #FFFFFF 0%, var(--cream-warm) 100%);
+            padding: 36px 30px;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 5px solid var(--gold);
+            position: sticky;
+            top: 130px;
+            transition: var(--transition);
+        }
+        .horoscope-output:hover {
+            box-shadow: var(--card-shadow-hover);
+        }
+        .horoscope-output .output-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.25);
+        }
+        .horoscope-output .output-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--saffron));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+        }
+        .horoscope-output h2 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin: 0;
+            line-height: 1.3;
+        }
+        #outputLoading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--saffron);
+            font-weight: 600;
+            padding: 20px 0;
+            font-size: 15px;
+        }
+        #outputLoading i {
+            font-size: 20px;
+        }
+        #outputText {
+            font-size: 16px;
+            color: var(--ink-soft);
+            line-height: 1.85;
+            font-weight: 400;
+            white-space: pre-wrap;
+        }
+        #outputText.placeholder {
+            color: var(--muted-light);
+            font-style: italic;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 15px;
+        }
+
+        /* ============================================
+                   SHEET PANEL (MODAL)
+                   ============================================ */
+        .sheet-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 5, 2, 0.65);
+            display: none;
+            z-index: 2050;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: opacity 0.3s;
+        }
+        .sheet-open .sheet-backdrop {
+            display: block;
+        }
+        .sheet-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 520px;
+            border-radius: var(--radius-xl);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(212, 175, 55, 0.3);
+            padding: 36px 32px;
+            z-index: 2100;
+            display: none;
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s;
+            border-top: 6px solid var(--saffron);
+            opacity: 0;
+        }
+        .sheet-open .sheet-panel {
+            display: block;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        .sheet-close-btn {
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: var(--muted);
+            transition: var(--transition);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        .sheet-close-btn:hover {
+            color: var(--maroon);
+            background: var(--gold-pale);
+        }
+        .sheet-panel h2 {
+            font-family: var(--font-display);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--maroon);
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .sheet-subtitle {
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        .type-switcher {
+            display: flex;
+            background: var(--cream-dark);
+            padding: 5px;
+            border-radius: 50px;
+            margin-bottom: 26px;
+            gap: 4px;
+        }
+        .type-btn {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            background: none;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 50px;
+            font-size: 15px;
+            transition: var(--transition);
+            color: var(--muted);
+            letter-spacing: 0.3px;
+            font-family: var(--font-body);
+        }
+        .type-btn.active {
+            background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-dark) 100%);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(255, 153, 51, 0.35);
+        }
+        .select-group {
+            margin-bottom: 20px;
+        }
+        .select-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .select-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 2px solid rgba(212, 175, 55, 0.25);
+            font-size: 15px;
+            background: var(--cream-warm);
+            color: var(--ink);
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: var(--font-body);
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23A0522D' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 42px;
+        }
+        .select-group select:focus {
+            outline: none;
+            border-color: var(--saffron);
+            box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.15);
+        }
+        .btn-fetch {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--saffron) 100%);
+            color: var(--maroon-dark);
+            border: none;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 17px;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            font-family: var(--font-body);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.35);
+            text-transform: uppercase;
+        }
+        .btn-fetch:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--saffron-light) 100%);
+        }
+
+        /* ============================================
+                   BLOG SECTION
+                   ============================================ */
+        .blog-section-title {
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .blog-section-title h2 {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 10px;
+        }
+        .blog-section-title p {
+            color: var(--muted);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .blog-sidebar {
+            background: var(--card-bg);
+            padding: 28px 22px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-top: 4px solid var(--saffron);
+            height: fit-content;
+            position: sticky;
+            top: 130px;
+        }
+        .blog-sidebar h4 {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .blog-sidebar h4 i {
+            color: var(--saffron);
+            font-size: 16px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            background: var(--cream-warm);
+            transition: var(--transition);
+            font-family: var(--font-body);
+            color: var(--ink);
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--saffron);
+            box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.12);
+        }
+        .category-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .category-item {
+            padding: 11px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 14px;
+            background: var(--cream-warm);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            color: var(--ink-soft);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .category-item i {
+            font-size: 13px;
+            color: var(--muted-light);
+            transition: var(--transition);
+            width: 18px;
+            text-align: center;
+        }
+        .category-item:hover {
+            background: var(--gold-pale);
+            border-color: var(--gold);
+            color: var(--maroon);
+            transform: translateX(4px);
+        }
+        .category-item:hover i {
+            color: var(--saffron);
+        }
+        .category-item.active {
+            background: linear-gradient(135deg, #FFF9F0, #FFF0D0);
+            border-color: var(--saffron);
+            color: var(--maroon);
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.15);
+        }
+        .category-item.active i {
+            color: var(--saffron);
+        }
+
+        .blog-main {
+            background: var(--card-bg);
+            padding: 30px 32px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-top: 4px solid var(--gold);
+            min-height: 400px;
+        }
+        .blog-card {
+            border-bottom: 1.5px solid rgba(212, 175, 55, 0.15);
+            padding: 26px 0;
+            transition: var(--transition);
+            position: relative;
+        }
+        .blog-card:last-child {
+            border-bottom: none;
+        }
+        .blog-card:hover {
+            padding-left: 8px;
+        }
+        .blog-card .blog-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .blog-category-badge {
+            font-size: 11px;
+            background: linear-gradient(135deg, rgba(255, 153, 51, 0.12), rgba(212, 175, 55, 0.08));
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--saffron-dark);
+            border: 1px solid rgba(255, 153, 51, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .blog-category-badge i {
+            font-size: 10px;
+        }
+        .blog-date {
+            font-size: 12px;
+            color: var(--muted-light);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+        .blog-card h3 {
+            font-family: var(--font-display);
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .blog-card p {
+            font-size: 14.5px;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+        .read-more {
+            color: var(--saffron-dark);
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+            border-bottom: 2px solid transparent;
+        }
+        .read-more:hover {
+            color: var(--maroon);
+            border-bottom-color: var(--maroon);
+            gap: 10px;
+        }
+        .read-more i {
+            font-size: 11px;
+            transition: var(--transition);
+        }
+        .blog-loading {
+            text-align: center;
+            padding: 50px 30px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+        .blog-loading i {
+            font-size: 30px;
+            color: var(--saffron);
+            display: block;
+            margin-bottom: 14px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.9);
+            }
+        }
+        .blog-empty {
+            text-align: center;
+            padding: 50px 30px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+        .blog-empty i {
+            font-size: 36px;
+            color: var(--muted-light);
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        /* ============================================
+                   ARTICLE MODAL
+                   ============================================ */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 5, 2, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2200;
+            padding: 30px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .modal-box {
+            background: var(--card-bg);
+            max-width: 780px;
+            width: 100%;
+            max-height: 82vh;
+            overflow-y: auto;
+            border-radius: var(--radius-xl);
+            padding: 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.25);
+            border-top: 6px solid var(--saffron);
+            animation: modalIn 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .modal-box h2 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 8px;
+            line-height: 1.3;
+            padding-right: 40px;
+        }
+        .modal-box #modalMeta {
+            color: var(--muted-light);
+            margin-bottom: 22px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .modal-box #modalMeta span {
+            background: var(--gold-pale);
+            padding: 3px 12px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--saffron-dark);
+        }
+        .modal-box #modalText {
+            line-height: 1.9;
+            font-size: 16px;
+            color: var(--ink-soft);
+        }
+        #closeModal {
+            position: absolute;
+            right: 22px;
+            top: 18px;
+            cursor: pointer;
+            font-size: 28px;
+            color: var(--muted);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        #closeModal:hover {
+            color: var(--maroon);
+            background: var(--gold-pale);
+            transform: rotate(90deg);
+        }
+
+        /* ============================================
+                   FOOTER
+                   ============================================ */
+        footer {
+            background: linear-gradient(180deg, #FFF3E6 0%, #FFE8CC 100%);
+            color: var(--maroon);
+            padding: 70px 0 25px;
+            margin-top: 90px;
+            border-top: 5px solid var(--saffron);
+            position: relative;
+            z-index: 1;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(255, 153, 51, 0.04), transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(212, 175, 55, 0.04), transparent 50%);
+            pointer-events: none;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+            padding-bottom: 5px;
+            color: var(--maroon);
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-col li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13.5px;
+            color: var(--ink-soft);
+            line-height: 1.5;
+        }
+        .footer-col li i {
+            color: var(--saffron);
+            font-size: 12px;
+            margin-top: 4px;
+            width: 14px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .footer-col a {
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .footer-col a:hover {
+            color: var(--saffron-dark);
+            padding-left: 4px;
+        }
+        .footer-social-wrap {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .footer-social-wrap a {
+            width: 38px;
+            height: 38px;
+            background: var(--gold-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 1px solid var(--gold);
+            color: var(--maroon);
+            transition: var(--transition);
+            font-size: 15px;
+        }
+        .footer-social-wrap a:hover {
+            background: var(--saffron);
+            color: #fff;
+            border-color: var(--saffron);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 153, 51, 0.3);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 22px;
+            text-align: center;
+            margin-top: 38px;
+            font-size: 13px;
+            color: var(--muted);
+            position: relative;
+            z-index: 1;
+        }
+        .footer-bottom strong {
+            color: var(--maroon);
+            font-weight: 700;
+        }
+
+        /* ============================================
+                   RESPONSIVE
+                   ============================================ */
+        @media (max-width: 1200px) {
+            .zodiac-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .blog-layout {
+                grid-template-columns: 260px 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .horoscope-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .horoscope-output {
+                position: static;
+            }
+            .blog-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .blog-sidebar {
+                position: static;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 18px;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            nav.main-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--card-bg);
+                flex-direction: column;
+                padding: 16px 24px;
+                border-top: 2px solid rgba(212, 175, 55, 0.3);
+                box-shadow: 0 20px 50px rgba(74, 14, 14, 0.15);
+                border-radius: 0 0 16px 16px;
+                gap: 4px;
+            }
+            nav.main-nav.show {
+                display: flex;
+            }
+            nav.main-nav a {
+                padding: 12px 14px;
+                border-radius: 8px;
+                font-size: 15px;
+            }
+            nav.main-nav a::after {
+                display: none;
+            }
+            .horoscope-hero h1 {
+                font-size: 36px;
+            }
+            .horoscope-hero p {
+                font-size: 15px;
+            }
+            .zodiac-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .zodiac-btn {
+                padding: 12px 8px 10px;
+            }
+            .zodiac-symbol-wrap {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 6px;
+            }
+            .zodiac-symbol-wrap .symbol {
+                font-size: 18px;
+            }
+            .zodiac-name-hindi {
+                font-size: 13px;
+            }
+            .panel-card {
+                padding: 24px 18px;
+            }
+            .horoscope-output {
+                padding: 26px 20px;
+            }
+            .blog-main {
+                padding: 22px 18px;
+            }
+            .blog-section-title h2 {
+                font-size: 30px;
+            }
+            .modal-box {
+                padding: 26px 20px;
+            }
+            .modal-box h2 {
+                font-size: 24px;
+            }
+            .sheet-panel {
+                padding: 26px 20px;
+                width: 95%;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .brand h1 {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+            .brand .logo-img {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .zodiac-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            .horoscope-hero h1 {
+                font-size: 28px;
+            }
+            .horoscope-hero {
+                padding: 50px 0 40px;
+            }
+            .blog-section-title h2 {
+                font-size: 24px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container">
-      <div class="nav-wrap">
-        <div class="brand">
-          <a href="index.html">
-            <img src="https://i.ibb.co/CKnY3DVT/Astrology-Business-Logo-Gold-Accents.png" alt="Logo" class="logo-img" />
-            <h1>PANDIT YUGAL ACHARYA</h1>
-          </a>
-        </div>
-        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-        <nav class="main-nav" id="mainNav">
-          <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
-          <a href="horoscope.html" class="active">Horoscope & Blogs</a><a href="honors.html">Honors</a><a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="horoscope-hero" data-aos="fade-down"><div class="container"><h1>Horoscope & Blogs</h1><p>Vedic guidance for your spiritual journey.</p></div></section>
-    <div class="container">
-      <section class="horoscope-layout">
-        <div class="panel-card">
-          <h2>Select Your Rashi</h2>
-          <div class="zodiac-grid">
-            <button class="zodiac-btn" data-sign="aries" data-sign-label="Mesha (Aries)">♈<br><b>Mesha</b></button>
-            <button class="zodiac-btn" data-sign="taurus" data-sign-label="Vrishabha (Taurus)">♉<br><b>Vrishabha</b></button>
-            <button class="zodiac-btn" data-sign="gemini" data-sign-label="Mithuna (Gemini)">♊<br><b>Mithuna</b></button>
-            <button class="zodiac-btn" data-sign="cancer" data-sign-label="Karka (Cancer)">♋<br><b>Karka</b></button>
-            <button class="zodiac-btn" data-sign="leo" data-sign-label="Simha (Leo)">♌<br><b>Simha</b></button>
-            <button class="zodiac-btn" data-sign="virgo" data-sign-label="Kanya (Virgo)">♍<br><b>Kanya</b></button>
-            <button class="zodiac-btn" data-sign="libra" data-sign-label="Tula (Libra)">♎<br><b>Tula</b></button>
-            <button class="zodiac-btn" data-sign="scorpio" data-sign-label="Vrischika (Scorpio)">♏<br><b>Vrischika</b></button>
-            <button class="zodiac-btn" data-sign="sagittarius" data-sign-label="Dhanu (Sagittarius)">♐<br><b>Dhanu</b></button>
-            <button class="zodiac-btn" data-sign="capricorn" data-sign-label="Makara (Capricorn)">♑<br><b>Makara</b></button>
-            <button class="zodiac-btn" data-sign="aquarius" data-sign-label="Kumbha (Aquarius)">♒<br><b>Kumbha</b></button>
-            <button class="zodiac-btn" data-sign="pisces" data-sign-label="Meena (Pisces)">♓<br><b>Meena</b></button>
-          </div>
-        </div>
-        <div class="horoscope-output">
-          <h2 id="outputTitle">Select your Rashi</h2>
-          <div id="outputLoading" style="display:none; color:var(--saffron);"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
-          <p id="outputText">Tap on a zodiac card to get started.</p>
-        </div>
-      </section>
-
-      <h2 style="margin-top: 100px; text-align:center; font-size:38px;">Spiritual Insights & Updates</h2>
-      <div class="blog-layout">
-        <aside class="blog-sidebar">
-          <h4>Search</h4>
-          <input type="text" id="blogSearch" class="search-box" placeholder="Search insights...">
-          <h4>Categories</h4>
-          <ul class="category-list">
-            <li class="category-item active" data-cat="all">All Updates</li>
-            <li class="category-item" data-cat="Astrology">Astrology</li>
-            <li class="category-item" data-cat="Festivals">Festivals</li>
-            <li class="category-item" data-cat="Dharma">Dharma</li>
-            <li class="category-item" data-cat="Manglik">Manglik</li>
-            <li class="category-item" data-cat="Panchang">Panchang</li>
-          </ul>
-        </aside>
-        <section class="blog-main" id="blogContainer">
-          <div style="text-align:center; padding: 40px;">Fetching latest spiritual updates...</div>
-        </section>
-      </div>
-    </div>
-  </main>
-
-  <div class="sheet-backdrop" id="sheetBackdrop"></div>
-  <div class="sheet-panel" id="sheetPanel">
-    <div style="text-align:right;"><button id="sheetClose" style="background:none; border:none; font-size:28px; cursor:pointer;">&times;</button></div>
-    <h2 id="sheetTitle" style="text-align:center;">Select Period</h2>
-    <div class="type-switcher"><button class="type-btn active" id="btnMonthly">Monthly</button><button class="type-btn" id="btnWeekly">Weekly</button></div>
-    <div class="select-group"><label>Month:</label><select id="selMonth">
-      <option value="January">January</option><option value="February">February</option><option value="March">March</option>
-      <option value="April">April</option><option value="May">May</option><option value="June">June</option>
-      <option value="July">July</option><option value="August">August</option><option value="September">September</option>
-      <option value="October">October</option><option value="November">November</option><option value="December">December</option>
-    </select></div>
-    <div class="select-group" id="weekContainer" style="display:none;"><label>Week:</label><select id="selWeek"></select></div>
-    <div class="select-group"><label>Year:</label><select id="selYear"><option value="2026">2026</option><option value="2025">2025</option></select></div>
-    <button class="btn-fetch" id="sheetConfirm">Get Horoscope</button>
-  </div>
-
-  <div class="modal" id="articleModal">
-    <div class="modal-box">
-      <span id="closeModal" style="position:absolute; right:25px; top:20px; cursor:pointer; font-size:32px;">&times;</span>
-      <h2 id="modalTitle" style="font-size:32px;"></h2>
-      <div id="modalMeta" style="color:#888; margin-bottom:25px;"></div>
-      <div id="modalText" style="line-height:1.9; font-size:18px;"></div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>Pandit Yugal Acharya</h4>
-          <p>Authentic Vedic Astrology and Vastu Shastra guidance to help you navigate life's journey with cosmic clarity.</p>
-          <div class="footer-social-wrap">
-            <a href="https://www.facebook.com/yugal.sharma.583" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/yugalaacharya" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/@AstroTVJaipur" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://api.whatsapp.com/send?phone=919928139485" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Explore Site</h4>
-          <ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Pandit Ji</a></li><li><a href="horoscope.html">Horoscope & Blogs</a></li><li><a href="honors.html">Awards & Honors</a></li><li><a href="contact.html">Book Appointment</a></li></ul>
-        </div>
-        <div class="footer-col">
-          <h4>Top Services</h4>
-          <ul><li><a href="#">Kundali Matching</a></li><li><a href="#">Vastu Consultation</a></li><li><a href="#">Grah Pravesh Pooja</a></li><li><a href="#">Rudrabhishek Havan</a></li><li><a href="#">Career Guidance</a></li></ul>
-        </div>
-        <div class="footer-col">
-          <h4>Get In Touch</h4>
-          <ul><li><i class="fas fa-phone-alt"></i> +91 99281 39485</li><li><i class="fas fa-envelope"></i> PT.YUGALSHARMA45@GMAIL.COM</li><li><i class="fas fa-map-marker-alt"></i> Vaishali Nagar, Jaipur, Rajasthan</li></ul>
-        </div>
-      </div>
-      <div class="footer-bottom"><div>© 2026 <strong>PANDIT YUGAL ACHARYA</strong>. All Rights Reserved.</div></div>
-    </div>
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
-
-    (function(){
-      // MOBILE MENU
-      const menuBtn = document.getElementById('menuToggle');
-      const mainNav = document.getElementById('mainNav');
-      menuBtn.onclick = () => mainNav.classList.toggle('show');
-
-      const HORO_API = "https://script.google.com/macros/s/AKfycbzc3cwgTp3ZuU0Jw1mPi25AahSuU6sr4u1y9oIvyP0U6sL-a4IW0XguiCXFNCZG1Aca8g/exec";
-      const BLOG_API = "https://script.google.com/macros/s/AKfycbx2ACQD38ULwCbUH8oWG4lL8AFtSvpHo30S3yWrkCQe4BOqjtrsEr0jZoeCFuyJFEa6zw/exec";
-      
-      let sign = "aries", mode = "monthly", allBlogs = [];
-      const weekMap = { "January": 4, "February": 4, "March": 5, "April": 4, "May": 4, "June": 5, "July": 4, "August": 4, "September": 5, "October": 4, "November": 4, "December": 5 };
-
-      // HOROSCOPE
-      document.querySelectorAll(".zodiac-btn").forEach(btn => {
-        btn.onclick = () => { sign = btn.dataset.sign; document.getElementById("sheetTitle").innerText = btn.dataset.signLabel; document.body.classList.add("sheet-open"); };
-      });
-
-      document.getElementById("btnMonthly").onclick = () => { mode = "monthly"; document.getElementById("weekContainer").style.display = "none"; };
-      document.getElementById("btnWeekly").onclick = () => { mode = "weekly"; document.getElementById("weekContainer").style.display = "block"; updateWeeks(); };
-
-      function updateWeeks() {
-        const select = document.getElementById("selWeek");
-        const count = weekMap[document.getElementById("selMonth").value] || 4;
-        select.innerHTML = ""; for(let i=1; i<=count; i++) select.innerHTML += `<option value="${i}">Week ${i}</option>`;
-      }
-
-      document.getElementById("sheetConfirm").onclick = async () => {
-        const payload = { type: mode, sign: sign, year: document.getElementById("selYear").value, month: document.getElementById("selMonth").value };
-        document.body.classList.remove("sheet-open"); document.getElementById("outputLoading").style.display = "block";
-        try { const res = await fetch(HORO_API, { method: "POST", body: JSON.stringify(payload) }); const data = await res.json(); document.getElementById("outputText").innerText = data.text || "Coming soon..."; } catch(e) { }
-        document.getElementById("outputLoading").style.display = "none";
-      };
-
-      // BLOG SYSTEM
-      async function fetchBlogs() {
-        try {
-          const res = await fetch(BLOG_API + "?type=blog_list&limit=50&t=" + Date.now());
-          const data = await res.json(); allBlogs = data.items || [];
-          displayBlogs(allBlogs);
-        } catch(e) { }
-      }
-
-      function displayBlogs(items) {
-        document.getElementById("blogContainer").innerHTML = items.map(item => `
-          <div class="blog-card" data-aos="fade-up">
-            <div style="display:flex; justify-content:space-between;">
-              <span style="font-size:11px; background:var(--accent-light); padding:4px 10px; border-radius:6px; font-weight:700;">${item.category}</span>
-              <p style="font-size:13px; color:var(--saffron); font-weight:700;">${item.date}</p>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="container">
+            <div class="nav-wrap">
+                <div class="brand">
+                    <a href="index.html">
+                        <img src="https://i.ibb.co/CKnY3DVT/Astrology-Business-Logo-Gold-Accents.png" alt="Pandit Yugal Acharya Logo" class="logo-img" />
+                        <h1>PANDIT YUGAL ACHARYA<span>Vedic Astrologer &amp; Vastu Guru</span></h1>
+                    </a>
+                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+                <nav class="main-nav" id="mainNav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="horoscope.html" class="active">Horoscope &amp; Blogs</a>
+                    <a href="honors.html">Honors</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
             </div>
-            <h3>${item.title}</h3><p>${item.short_desc}</p>
-            <span class="read-more" onclick="showFull('${item.title.replace(/'/g, "\\'")}')">Read Full Insight →</span>
-          </div>`).join('');
-      }
+        </div>
+    </header>
 
-      // GLOBAL SCOPE MODAL
-      window.showFull = (title) => {
-        const b = allBlogs.find(x => x.title === title);
-        if (b) {
-          document.getElementById("modalTitle").innerText = b.title;
-          document.getElementById("modalMeta").innerText = `${b.category} | ${b.date}`;
-          document.getElementById("modalText").innerHTML = (b.full_text || b.short_desc).replace(/\n/g, "<br>");
-          document.getElementById("articleModal").style.display = "flex";
-          document.body.style.overflow = "hidden";
-        }
-      };
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="horoscope-hero" data-aos="fade-down">
+            <div class="container">
+                <div class="hero-badge"><i class="fas fa-star"></i> ज्योतिष विद्या</div>
+                <h1>Horoscope & <span class="gradient-text">Blogs</span></h1>
+                <p>Vedic guidance for your spiritual journey — explore your Rashi, discover cosmic insights, and stay updated with sacred wisdom.</p>
+                <div class="divider-ornament">
+                    <span class="line"></span>
+                    <span class="diamond"></span>
+                    <span class="om">ॐ</span>
+                    <span class="diamond"></span>
+                    <span class="line"></span>
+                </div>
+            </div>
+        </section>
 
-      document.getElementById("blogSearch").oninput = (e) => {
-        const term = e.target.value.toLowerCase();
-        displayBlogs(allBlogs.filter(b => b.title.toLowerCase().includes(term)));
-      };
+        <!-- ===== HOROSCOPE SECTION ===== -->
+        <div class="container">
+            <section class="horoscope-layout">
+                <!-- Left: Zodiac Grid -->
+                <div class="panel-card" data-aos="fade-right">
+                    <h2>अपनी राशि चुनें</h2>
+                    <p class="subtitle">Select Your Rashi — 12 Zodiac Signs</p>
+                    <div class="zodiac-grid">
+                        <button class="zodiac-btn" data-sign="aries" data-sign-label="मेष राशि (Mesha)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9800;</span></span>
+                            <span class="zodiac-name-hindi">मेष</span>
+                            <span class="zodiac-name-en">Mesha · Aries</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="taurus" data-sign-label="वृषभ राशि (Vrishabha)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9801;</span></span>
+                            <span class="zodiac-name-hindi">वृषभ</span>
+                            <span class="zodiac-name-en">Vrishabha · Taurus</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="gemini" data-sign-label="मिथुन राशि (Mithuna)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9802;</span></span>
+                            <span class="zodiac-name-hindi">मिथुन</span>
+                            <span class="zodiac-name-en">Mithuna · Gemini</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="cancer" data-sign-label="कर्क राशि (Karka)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9803;</span></span>
+                            <span class="zodiac-name-hindi">कर्क</span>
+                            <span class="zodiac-name-en">Karka · Cancer</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="leo" data-sign-label="सिंह राशि (Simha)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9804;</span></span>
+                            <span class="zodiac-name-hindi">सिंह</span>
+                            <span class="zodiac-name-en">Simha · Leo</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="virgo" data-sign-label="कन्या राशि (Kanya)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9805;</span></span>
+                            <span class="zodiac-name-hindi">कन्या</span>
+                            <span class="zodiac-name-en">Kanya · Virgo</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="libra" data-sign-label="तुला राशि (Tula)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9806;</span></span>
+                            <span class="zodiac-name-hindi">तुला</span>
+                            <span class="zodiac-name-en">Tula · Libra</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="scorpio" data-sign-label="वृश्चिक राशि (Vrishchika)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9807;</span></span>
+                            <span class="zodiac-name-hindi">वृश्चिक</span>
+                            <span class="zodiac-name-en">Vrishchika · Scorpio</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="sagittarius" data-sign-label="धनु राशि (Dhanu)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9808;</span></span>
+                            <span class="zodiac-name-hindi">धनु</span>
+                            <span class="zodiac-name-en">Dhanu · Sagittarius</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="capricorn" data-sign-label="मकर राशि (Makara)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9809;</span></span>
+                            <span class="zodiac-name-hindi">मकर</span>
+                            <span class="zodiac-name-en">Makara · Capricorn</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="aquarius" data-sign-label="कुंभ राशि (Kumbha)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9810;</span></span>
+                            <span class="zodiac-name-hindi">कुंभ</span>
+                            <span class="zodiac-name-en">Kumbha · Aquarius</span>
+                        </button>
+                        <button class="zodiac-btn" data-sign="pisces" data-sign-label="मीन राशि (Meena)">
+                            <span class="zodiac-symbol-wrap"><span class="symbol">&#9811;</span></span>
+                            <span class="zodiac-name-hindi">मीन</span>
+                            <span class="zodiac-name-en">Meena · Pisces</span>
+                        </button>
+                    </div>
+                </div>
 
-      document.querySelectorAll(".category-item").forEach(item => {
-        item.onclick = () => {
-          document.querySelectorAll(".category-item").forEach(li => li.classList.remove("active")); item.classList.add("active");
-          const cat = item.dataset.cat; displayBlogs(cat === "all" ? allBlogs : allBlogs.filter(b => b.category === cat));
-        };
-      });
+                <!-- Right: Output Panel -->
+                <div class="horoscope-output" data-aos="fade-left">
+                    <div class="output-header">
+                        <div class="output-icon"><i class="fas fa-moon"></i></div>
+                        <h2 id="outputTitle">अपनी राशि चुनें</h2>
+                    </div>
+                    <div id="outputLoading" style="display:none;">
+                        <i class="fas fa-spinner fa-spin"></i> अपना राशिफल लाया जा रहा है...
+                    </div>
+                    <p id="outputText" class="placeholder"><i class="fas fa-hand-pointer" style="margin-right:8px;"></i>कृपया ऊपर से अपनी राशि चुनें — Please tap on a zodiac card above to get started.</p>
+                </div>
+            </section>
 
-      document.getElementById("closeModal").onclick = () => { document.getElementById("articleModal").style.display = "none"; document.body.style.overflow = "auto"; }
-      document.getElementById("sheetClose").onclick = () => document.body.classList.remove("sheet-open");
-      fetchBlogs();
-    })();
-  </script>
+            <!-- ===== BLOG SECTION ===== -->
+            <div class="blog-section-title" data-aos="fade-up">
+                <h2>Spiritual Insights & Updates</h2>
+                <p>ज्योतिष, धर्म, और आध्यात्मिक ज्ञान से जुड़े ताज़ा लेख और अपडेट</p>
+                <div class="divider-ornament">
+                    <span class="line"></span>
+                    <span class="diamond"></span>
+                    <span class="om">ॐ</span>
+                    <span class="diamond"></span>
+                    <span class="line"></span>
+                </div>
+            </div>
+            <div class="blog-layout" data-aos="fade-up">
+                <aside class="blog-sidebar">
+                    <h4><i class="fas fa-search"></i> Search</h4>
+                    <input type="text" id="blogSearch" class="search-box" placeholder="खोजें — Search insights...">
+                    <h4><i class="fas fa-tags"></i> Categories</h4>
+                    <ul class="category-list">
+                        <li class="category-item active" data-cat="all"><i class="fas fa-layer-group"></i> All Updates</li>
+                        <li class="category-item" data-cat="Astrology"><i class="fas fa-star"></i> Astrology</li>
+                        <li class="category-item" data-cat="Festivals"><i class="fas fa-holly-berry"></i> Festivals</li>
+                        <li class="category-item" data-cat="Dharma"><i class="fas fa-om"></i> Dharma</li>
+                        <li class="category-item" data-cat="Manglik"><i class="fas fa-gem"></i> Manglik</li>
+                        <li class="category-item" data-cat="Panchang"><i class="fas fa-calendar-alt"></i> Panchang</li>
+                    </ul>
+                </aside>
+                <section class="blog-main" id="blogContainer">
+                    <div class="blog-loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Fetching latest spiritual updates...</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== SHEET PANEL (Horoscope Selector) ===== -->
+    <div class="sheet-backdrop" id="sheetBackdrop"></div>
+    <div class="sheet-panel" id="sheetPanel">
+        <div style="text-align:right;">
+            <button id="sheetClose" class="sheet-close-btn" aria-label="Close">&times;</button>
+        </div>
+        <h2 id="sheetTitle">Select Period</h2>
+        <p class="sheet-subtitle">अपनी राशि का राशिफल देखें</p>
+        <div class="type-switcher">
+            <button class="type-btn active" id="btnMonthly">Monthly</button>
+            <button class="type-btn" id="btnWeekly">Weekly</button>
+        </div>
+        <div class="select-group">
+            <label>Month</label>
+            <select id="selMonth">
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+        </div>
+        <div class="select-group" id="weekContainer" style="display:none;">
+            <label>Week</label>
+            <select id="selWeek"></select>
+        </div>
+        <div class="select-group">
+            <label>Year</label>
+            <select id="selYear">
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+            </select>
+        </div>
+        <button class="btn-fetch" id="sheetConfirm">Get Horoscope</button>
+    </div>
+
+    <!-- ===== ARTICLE MODAL ===== -->
+    <div class="modal" id="articleModal">
+        <div class="modal-box">
+            <span id="closeModal" aria-label="Close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div id="modalMeta"></div>
+            <div id="modalText"></div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Pandit Yugal Acharya</h4>
+                    <p>Authentic Vedic Astrology and Vastu Shastra guidance to help you navigate life's journey with cosmic clarity.</p>
+                    <div class="footer-social-wrap">
+                        <a href="https://www.facebook.com/yugal.sharma.583" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/yugalaacharya" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@AstroTVJaipur" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=919928139485" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore Site</h4>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> <a href="index.html">Home</a></li>
+                        <li><i class="fas fa-angle-right"></i> <a href="about.html">About Pandit Ji</a></li>
+                        <li><i class="fas fa-angle-right"></i> <a href="horoscope.html">Horoscope &amp; Blogs</a></li>
+                        <li><i class="fas fa-angle-right"></i> <a href="honors.html">Awards &amp; Honors</a></li>
+                        <li><i class="fas fa-angle-right"></i> <a href="contact.html">Book Appointment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Top Services</h4>
+                    <ul>
+                        <li><i class="fas fa-angle-right"></i> <a href="#">Kundali Matching</a></li>
+                        <li><i class="fas fa-angle-right"></i> <a href="#">Vastu Consultation</a></li>
+                        <li><i class="fas fa-angle-right"></i> <a href="#">Grah Pravesh Pooja</a></li>
+                        <li><i class="fas fa-angle-right"></i> <a href="#">Rudrabhishek Havan</a></li>
+                        <li><i class="fas fa-angle-right"></i> <a href="#">Career Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get In Touch</h4>
+                    <ul>
+                        <li><i class="fas fa-phone-alt"></i> +91 99281 39485</li>
+                        <li><i class="fas fa-envelope"></i> PT.YUGALSHARMA45@GMAIL.COM</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Vaishali Nagar, Jaipur, Rajasthan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 <strong>PANDIT YUGAL ACHARYA</strong>. All Rights Reserved. | राधे राधे 🙏</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    </script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        (function() {
+            // ===== MOBILE MENU =====
+            const menuBtn = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            menuBtn.onclick = () => mainNav.classList.toggle('show');
+
+            // ===== API ENDPOINTS (unchanged) =====
+            const HORO_API = "https://script.google.com/macros/s/AKfycbzc3cwgTp3ZuU0Jw1mPi25AahSuU6sr4u1y9oIvyP0U6sL-a4IW0XguiCXFNCZG1Aca8g/exec";
+            const BLOG_API = "https://script.google.com/macros/s/AKfycbx2ACQD38ULwCbUH8oWG4lL8AFtSvpHo30S3yWrkCQe4BOqjtrsEr0jZoeCFuyJFEa6zw/exec";
+
+            let sign = "aries",
+                mode = "monthly",
+                allBlogs = [];
+            const weekMap = { "January": 4, "February": 4, "March": 5, "April": 4, "May": 4, "June": 5, "July": 4,
+                "August": 4, "September": 5, "October": 4, "November": 4, "December": 5 };
+
+            // ===== HOROSCOPE SELECTION =====
+            document.querySelectorAll(".zodiac-btn").forEach(btn => {
+                btn.onclick = () => {
+                    sign = btn.dataset.sign;
+                    document.getElementById("sheetTitle").innerText = btn.dataset.signLabel;
+                    document.body.classList.add("sheet-open");
+                    // Reset active state
+                    document.querySelectorAll(".zodiac-btn").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                };
+            });
+
+            // Type switcher buttons
+            document.getElementById("btnMonthly").onclick = () => {
+                mode = "monthly";
+                document.getElementById("weekContainer").style.display = "none";
+                document.getElementById("btnMonthly").classList.add("active");
+                document.getElementById("btnWeekly").classList.remove("active");
+            };
+            document.getElementById("btnWeekly").onclick = () => {
+                mode = "weekly";
+                document.getElementById("weekContainer").style.display = "block";
+                updateWeeks();
+                document.getElementById("btnWeekly").classList.add("active");
+                document.getElementById("btnMonthly").classList.remove("active");
+            };
+
+            function updateWeeks() {
+                const select = document.getElementById("selWeek");
+                const count = weekMap[document.getElementById("selMonth").value] || 4;
+                select.innerHTML = "";
+                for (let i = 1; i <= count; i++) {
+                    select.innerHTML += `<option value="${i}">Week ${i}</option>`;
+                }
+            }
+            // Update weeks when month changes (for weekly mode)
+            document.getElementById("selMonth").onchange = () => {
+                if (mode === "weekly") updateWeeks();
+            };
+
+            // Fetch horoscope
+            document.getElementById("sheetConfirm").onclick = async () => {
+                const payload = {
+                    type: mode,
+                    sign: sign,
+                    year: document.getElementById("selYear").value,
+                    month: document.getElementById("selMonth").value
+                };
+                if (mode === "weekly") {
+                    payload.week = document.getElementById("selWeek").value;
+                }
+                document.body.classList.remove("sheet-open");
+                document.getElementById("outputLoading").style.display = "flex";
+                document.getElementById("outputText").innerHTML = "";
+                try {
+                    const res = await fetch(HORO_API, {
+                        method: "POST",
+                        body: JSON.stringify(payload)
+                    });
+                    const data = await res.json();
+                    document.getElementById("outputText").innerText = data.text || "Coming soon...";
+                    document.getElementById("outputText").classList.remove("placeholder");
+                } catch (e) {
+                    document.getElementById("outputText").innerText = "Unable to fetch horoscope. Please try again.";
+                }
+                document.getElementById("outputLoading").style.display = "none";
+            };
+
+            // Sheet close
+            document.getElementById("sheetClose").onclick = () => document.body.classList.remove("sheet-open");
+            document.getElementById("sheetBackdrop").onclick = () => document.body.classList.remove("sheet-open");
+
+            // ===== BLOG SYSTEM =====
+            async function fetchBlogs() {
+                try {
+                    const res = await fetch(BLOG_API + "?type=blog_list&limit=50&t=" + Date.now());
+                    const data = await res.json();
+                    allBlogs = data.items || [];
+                    displayBlogs(allBlogs);
+                } catch (e) {
+                    document.getElementById("blogContainer").innerHTML =
+                        '<div class="blog-empty"><i class="fas fa-wifi"></i> Unable to load blogs. Please check your connection.</div>';
+                }
+            }
+
+            function displayBlogs(items) {
+                if (!items || items.length === 0) {
+                    document.getElementById("blogContainer").innerHTML =
+                        '<div class="blog-empty"><i class="fas fa-inbox"></i> No articles found.</div>';
+                    return;
+                }
+                document.getElementById("blogContainer").innerHTML = items.map(item => `
+                            <div class="blog-card" data-aos="fade-up">
+                                <div class="blog-meta-row">
+                                    <span class="blog-category-badge"><i class="fas fa-tag"></i> ${item.category}</span>
+                                    <p class="blog-date"><i class="far fa-calendar-alt" style="margin-right:5px;"></i>${item.date}</p>
+                                </div>
+                                <h3>${item.title}</h3>
+                                <p>${item.short_desc}</p>
+                                <span class="read-more" onclick="showFull('${item.title.replace(/'/g, "\\'")}')">
+                                    Read Full Insight <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        `).join('');
+            }
+
+            // Global scope for article modal
+            window.showFull = (title) => {
+                const b = allBlogs.find(x => x.title === title);
+                if (b) {
+                    document.getElementById("modalTitle").innerText = b.title;
+                    document.getElementById("modalMeta").innerHTML =
+                        `<span>${b.category}</span><span>${b.date}</span>`;
+                    document.getElementById("modalText").innerHTML = (b.full_text || b.short_desc).replace(/\n/g,
+                        "<br>");
+                    document.getElementById("articleModal").style.display = "flex";
+                    document.body.style.overflow = "hidden";
+                }
+            };
+
+            document.getElementById("blogSearch").oninput = (e) => {
+                const term = e.target.value.toLowerCase();
+                const filtered = allBlogs.filter(b =>
+                    b.title.toLowerCase().includes(term) ||
+                    (b.short_desc && b.short_desc.toLowerCase().includes(term))
+                );
+                displayBlogs(filtered);
+            };
+
+            document.querySelectorAll(".category-item").forEach(item => {
+                item.onclick = () => {
+                    document.querySelectorAll(".category-item").forEach(li => li.classList.remove(
+                        "active"));
+                    item.classList.add("active");
+                    const cat = item.dataset.cat;
+                    displayBlogs(cat === "all" ? allBlogs : allBlogs.filter(b => b.category === cat));
+                };
+            });
+
+            document.getElementById("closeModal").onclick = () => {
+                document.getElementById("articleModal").style.display = "none";
+                document.body.style.overflow = "auto";
+            };
+            // Close modal on backdrop click
+            document.getElementById("articleModal").onclick = (e) => {
+                if (e.target === document.getElementById("articleModal")) {
+                    document.getElementById("articleModal").style.display = "none";
+                    document.body.style.overflow = "auto";
+                }
+            };
+
+            // Initialize
+            fetchBlogs();
+            updateWeeks();
+        })();
+    </script>
 </body>
 </html>
